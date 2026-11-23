@@ -11,6 +11,20 @@ The site should always feel:
 - Focused on safety without creating unnecessary alarm
 - Fast to use on a phone, especially when a customer is roadside or between work appointments
 
+## Mobile-first and local discovery standard
+
+Assume most first visits come from a phone after a local Google search such as “brake service near me,” “mobile brake repair,” or “rotor replacement Inland Empire.” Mobile conversion and local trust take priority over decorative desktop treatments.
+
+- Keep the primary phone, text, and quote actions visible without requiring desktop navigation.
+- Keep important copy, service area, and request controls near the top of the mobile experience.
+- Use comfortable tap targets, readable text, short form steps, and minimal typing wherever possible.
+- Test the page at narrow phone widths before considering a feature complete.
+- Keep page title, description, headings, service names, cities served, and structured data aligned with real services and confirmed coverage.
+- Make the business name, service type, Inland Empire coverage, and contact action easy for both people and search engines to understand.
+- Avoid keyword stuffing, city-list spam, hidden text, or claims that are not operationally true.
+- Optimize images and scripts so a customer on a mobile network can reach the quote action quickly.
+- Preserve a clear path from a Google Business Profile visit to call, text, directions or service request.
+
 ## Primary customer path
 
 Every page and feature should support this path:
