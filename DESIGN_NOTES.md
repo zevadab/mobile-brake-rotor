@@ -2,6 +2,8 @@
 
 ## Current direction — standards v2
 
+The supporting photo set now carries the visual story below the hero: component close-up at services, a driveway service scene at the process, and a customer conversation beside the personal-attention copy. The detailed hands/rotor shot is reserved for the request dialog. Mobile uses separate text/image blocks and subject-aware positioning, keeping the service cards short and readable.
+
 The owner supplied site-standards-v2.md and the preferred photorealistic mechanic hero. SITE_STANDARDS.md now incorporates that direction plus existing operational standards. The illustrated Chevy truck sequence described below is historical and has been removed from the page.
 
 Current design uses the supplied photograph with responsive WebP delivery, an accessible dark overlay on desktop, and separate copy/photo regions on phones. Motion is limited to a slight image settle and short section reveals, with reduced-motion support. No named identity or completed customer job is attributed to the supplied image.
