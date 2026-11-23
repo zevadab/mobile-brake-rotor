@@ -1,4 +1,4 @@
-# Scroll design and pricing references
+# Scroll design and estimate messaging
 
 ## Current direction — standards v2
 
@@ -21,15 +21,11 @@ Earlier adaptations used an SVG pickup and then a photographic wheel with scroll
 
 The reference popup was explored in an earlier version. The owner has since removed intake dialogs and forms in favor of direct messaging; no newsletter or automatic popup is included.
 
-## Market ballparks
+## Free estimates and fair pricing
 
-User requested competitor-based ranges. Public pages reviewed November 23, 2026:
+The owner has replaced published competitor price ranges with free estimates and fair pricing tailored to each vehicle and service need. Do not restore ballpark figures, fixed prices, competitor comparisons or the old source disclosure.
 
-- https://supercanic.com/blog/brake-job-cost — Riverside County guide: pads $200–$400 per axle; pads and rotors $350–$700 per axle.
-- https://brakestogo.com/services/brake-pad-replacement/ — advertised pads $195, pads and rotors $429–$589, front or rear.
-- https://supercanic.com/services/brake-service — labor starts at $150 per axle, $200 for trucks/imports, parts additional. This labor-only offer is not treated as a total price.
-
-The homepage uses the Riverside County budgeting ranges for parts/labor. They are visibly market benchmarks rather than our fixed offers. Exact pricing, taxes, travel, vehicle conditions and parts are reviewed individually. Fluid service and inspection receive individual quotes rather than invented ranges.
+Hero and service actions lead to messaging for a free estimate. Inspection and repair are not described as free; any inspection, service, tax or travel charges are discussed before work begins. Quotes and timing are confirmed personally after reviewing the vehicle and required work.
 
 ## Integration boundary
 

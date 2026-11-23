@@ -326,4 +326,4 @@ Customers start a conversation through a configured WhatsApp or Messenger link. 
 
 Until both business accounts are configured and verified, keep their respective buttons labeled as coming soon. See REQUEST_SETUP.md. Public configuration contains no account credentials.
 
-Competitor-derived ballparks remain visibly labeled as market budgeting estimates, never fixed owner quotes. Source references are in DESIGN_NOTES.md.
+Use “Free estimates” and “Fair pricing” instead of numerical ballparks or competitor comparisons. Tailor estimates to the customer’s vehicle, parts and service needs. Free estimates do not imply free inspections or repairs; discuss any inspection, service, tax or travel charges before work begins. Apply this messaging consistently in English and Spanish, including metadata. See DESIGN_NOTES.md.
