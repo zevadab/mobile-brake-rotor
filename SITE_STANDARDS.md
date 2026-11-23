@@ -156,6 +156,21 @@ Use this or a reviewed equivalent near the quote form:
 - Preserve clean future routes such as `/services`, `/service-area`, `/contact`, and `/faq`.
 - Keep the current static prototype usable while backend integrations are developed.
 
+## Form abuse and request-volume protection
+
+The browser can improve the experience, but it cannot be the final security boundary. Once the form is connected to a real endpoint, apply protection on the server or form provider as well:
+
+- Rate-limit by IP, email, and phone; start with a conservative limit such as a few requests per hour per signal.
+- Add bot detection or a managed challenge only when spam volume justifies the added friction.
+- Keep the honeypot field and reject submissions that fill it.
+- Enforce the same field length, file type, and file size limits server-side.
+- Accept only JPEG, PNG, or WebP photos and start with a 5 MB maximum.
+- Validate and sanitize all text before storing, emailing, or displaying it.
+- Do not send uploaded files directly to staff inboxes without scanning and controlled storage.
+- Deduplicate repeated requests and alert staff to suspicious bursts rather than forwarding every message.
+- Log request status and abuse signals without storing unnecessary personal data.
+- Never rely on hidden fields, client-side cooldowns, or JavaScript validation alone.
+
 ## Placeholder replacement checklist
 
 Before launch or paid promotion, replace and verify:
