@@ -15,7 +15,7 @@ The approved direction is Concept 2: a brake rotor with an integrated wrench.
 - `logo-stacked.png` — compact social, mobile, and square-layout lockup
 - `logo-icon.png` — favicon, avatar, app icon, and small decal mark
 - `logo-refined-concept-2.png` — refined concept presentation reference
-- `logo-concept-sheet.png` — original exploration sheet showing the approved concept in context
+- Website derivatives: `logo-horizontal-660.webp`, `favicon-48.png`, and `apple-touch-icon.png` preserve the supplied artwork at appropriate display sizes. Retain original PNGs for source/reference use.
 
 ## Color palette
 
@@ -29,19 +29,19 @@ The approved direction is Concept 2: a brake rotor with an integrated wrench.
 
 ## Design rules
 
-- Use navy as the dominant color and orange as the action accent.
+- The current website uses black and charcoal surfaces, light text, and restrained orange accents. The palette above describes brand colors; the owner's dark website direction supersedes its light-background recommendations.
 - Keep layouts clean, high-contrast, and mobile-first.
 - Use bold modern sans-serif typography with generous spacing.
 - Avoid racing flames, excessive chrome, aggressive imagery, and clutter.
-- Keep call, text, and quote actions visible on mobile.
+- Keep WhatsApp and Messenger actions visible on mobile. Missing destinations remain clearly labeled as coming soon.
 - Use the logo on white, light gray, or deep navy backgrounds with sufficient contrast.
 - Do not stretch, rotate, recolor, or add effects to the logo.
 
 ## Website messaging
 
-- **Hero headline:** Brake Service That Comes to You.
-- **Primary CTA:** Request a Quote
-- **Secondary CTA:** Call or Text
+- **Hero headline:** Your brakes. My focus.
+- **Primary CTA:** WhatsApp business chat for a free estimate
+- **Secondary CTA:** Messenger business chat when configured
 - **Primary services:** Brake pads, rotors, brake fluid service, brake inspections, brake noise and vibration evaluation.
 - **Additional services:** Oil changes, oil filters, cabin air filters, and battery replacements when appropriate and available.
 - **Vehicle scope:** Cars, trucks, and vans. Do not restrict messaging by country of manufacture or promise support for every make. Review the year, make, model and requested service with each potential customer.

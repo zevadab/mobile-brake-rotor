@@ -133,3 +133,34 @@ test('configuration refuses malformed numbers and non-business-chat destinations
   assert.throws(() => contactDestinations({messengerUrl}));
  }
 });
+
+test('both languages have consistent search metadata and public discovery files', async () => {
+ const origin = 'https://themobilebrakerotorguy.com/';
+ for (const [page, locale, canonical] of [['index.html', 'en', origin], ['es.html', 'es', origin + 'es.html']]) {
+  const html = await readFile('dist/' + page, 'utf8');
+  assert.ok(html.includes('<html lang="' + locale + '">'));
+  assert.ok(html.includes('<link rel="canonical" href="' + canonical + '">'));
+  assert.ok(html.includes('<meta property="og:url" content="' + canonical + '">'));
+  assert.ok(html.includes('hreflang="en" href="' + origin + '"'));
+  assert.ok(html.includes('hreflang="es" href="' + origin + 'es.html"'));
+  assert.match(html, /<meta name="description" content="[^"]+">/);
+  const schema = JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]);
+  assert.equal(schema['@type'], 'AutoRepair');
+  assert.equal(schema.url, origin);
+  assert.ok(schema.description && !schema.description.includes('undefined'));
+  assert.doesNotMatch(html, /domestic|ballpark|\$\d|marcas americanas/i);
+ }
+ assert.equal((await readFile('dist/CNAME', 'utf8')).trim(), 'themobilebrakerotorguy.com');
+ assert.ok((await readFile('dist/robots.txt', 'utf8')).includes('Sitemap: ' + origin + 'sitemap.xml'));
+ const sitemap = await readFile('dist/sitemap.xml', 'utf8');
+ assert.ok(sitemap.includes('<loc>' + origin + '</loc>'));
+ assert.ok(sitemap.includes('<loc>' + origin + 'es.html</loc>'));
+});
+
+test('displayed logo and favicon stay within mobile image budgets', async () => {
+ const html = await readFile('dist/index.html', 'utf8');
+ const logo = html.match(/<a class="brand"[^>]*><img src="([^"]+)"/)[1];
+ const icon = html.match(/<link rel="icon"[^>]*href="([^"]+)"/)[1];
+ assert.ok((await readFile('dist/' + logo)).length < 75000, 'Header logo should stay below 75 KB');
+ assert.ok((await readFile('dist/' + icon)).length < 10000, 'Favicon should stay below 10 KB');
+});

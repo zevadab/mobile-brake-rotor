@@ -150,6 +150,9 @@ The customer should understand:
 - Lazy-load below-the-fold photography
 - Use modern image formats where practical
 - Preserve accessible contrast and visible focus states
+- Keep mobile navigation usable without JavaScript. Closing an open menu with Escape returns focus to its toggle.
+- Support enlarged text without clipping headings or chat controls; reserve enough space for the mobile action bar as its text grows.
+- Serve display-sized logo and favicon derivatives instead of loading full-resolution artwork in the header or browser tab.
 - Maintain semantic headings and labeled controls
 - Keep WhatsApp and Messenger actions persistent on mobile
 - No unnecessary video backgrounds or heavy animation libraries

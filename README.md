@@ -52,6 +52,19 @@ The build replaces only this project's generated `dist/` directory. It generates
 
 Read [site standards](docs/SITE_STANDARDS.md), [brand guidelines](docs/BRAND_GUIDELINES.md), [design notes](docs/DESIGN_NOTES.md), [hero treatment](docs/MOTION_DESIGN.md), and [photography notes](docs/PHOTOGRAPHY.md) before changing those areas.
 
+## Browser audit
+
+The optional audit checks English and Spanish in Chromium and WebKit at phone, tablet, landscape and desktop sizes. It covers native WhatsApp links, unavailable Messenger states, keyboard navigation, FAQ controls, enlarged text, reduced motion, script-free navigation and automated accessibility checks. It intercepts WhatsApp navigation locally and never sends a message.
+
+Install audit tools into the ignored cache folder, keeping them out of production:
+
+```sh
+npm install --prefix .cache/audit-tools --no-save --ignore-scripts playwright axe-core
+node .cache/audit-tools/node_modules/playwright/cli.js install chromium webkit
+```
+
+Build and serve `dist/` using the preview commands above, then run `node tests/browser-audit.cjs`. Set `AUDIT_BASE_URL` if the local preview uses a different address. Results are written to `.cache/audit-results.json`. Automated checks supplement real-phone and assistive-technology review; they are not a certification of accessibility or live account delivery.
+
 ## Deployment
 
 Push approved work to `main`. The [Pages workflow](.github/workflows/pages.yml) builds the site, runs the checks and uploads only `dist/`. The public English/Spanish URLs, domain configuration and optimized-image URLs remain unchanged by this reorganization.
