@@ -62,7 +62,7 @@ Images should not show:
 
 The homepage should tell a short visual story:
 
-1. **Need help?** — A premium hero showing the owner-operator at the customer’s truck.
+1. **Need help?** — A large centered tire and wheel leads a pinned photographic sequence: wheel, brake close-up, then the owner-operator at the customer's truck.
 2. **What do we do?** — Clear brake and rotor services with a close-up brake image.
 3. **How does it work?** — Request, confirm, and receive service at your location.
 4. **Why choose us?** — Personal service, clear communication, and local coverage.
@@ -79,7 +79,9 @@ Use smooth, restrained transitions:
 - Numbered process steps that reveal sequentially
 - Sticky mobile Call, Text, and Request Quote actions
 
-Respect `prefers-reduced-motion`. Motion should support hierarchy, not become the attraction.
+The hero is the deliberate motion centerpiece, per the owner's latest direction. Use native sticky positioning and reversible scroll progress: oversized wheel zoom, circular brake-photo reveal, and a driveway-photo wipe. Keep copy short, quote actions accessible, and a visible services/pricing link that bypasses the sequence. Do not intercept touch, wheel, or keyboard scrolling. Elsewhere, keep motion restrained.
+
+Respect `prefers-reduced-motion`: show a single static wheel hero with no extended scroll runway. Keep the same usable fallback without JavaScript. Short and landscape viewports must keep hero actions inside the visible stage. See MOTION_DESIGN.md for asset provenance and verification.
 
 ## Copy standard
 
@@ -157,7 +159,7 @@ Before printing vehicle graphics or using the logo at large physical sizes, recr
 
 ## How these standards apply
 
-This v2 direction supersedes the previous illustrated truck/wheel sequence. The supplied guidelines are adopted as project design standards at the owner's request. The operational requirements below remain in effect. Keep the original brand logos unchanged.
+This v2 direction supersedes the previous illustrated truck/wheel sequence. The owner's subsequent request adds a photorealistic pinned wheel-to-brake-to-driveway hero; the prior static mechanic hero is now the final scene. The operational requirements below remain in effect. Keep the original brand logos unchanged.
 
 ## Mobile-first and local discovery standard
 

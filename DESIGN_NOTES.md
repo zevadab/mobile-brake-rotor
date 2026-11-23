@@ -6,7 +6,7 @@ The supporting photo set now carries the visual story below the hero: component 
 
 The owner supplied site-standards-v2.md and the preferred photorealistic mechanic hero. SITE_STANDARDS.md now incorporates that direction plus existing operational standards. The illustrated Chevy truck sequence described below is historical and has been removed from the page.
 
-Current design uses the supplied photograph with responsive WebP delivery, an accessible dark overlay on desktop, and separate copy/photo regions on phones. Motion is limited to a slight image settle and short section reveals, with reduced-motion support. No named identity or completed customer job is attributed to the supplied image.
+The current hero opens with an oversized photorealistic wheel on black. Native sticky positioning holds the stage while scroll progress zooms out of the wheel, reveals a component close-up through a circular mask, and wipes into the supplied driveway photograph. Copy changes with each scene; quote and skip-to-services links remain accessible. Reduced-motion and no-JavaScript visits get a static wheel hero. Responsive WebP images preserve mobile loading performance. See MOTION_DESIGN.md. No named identity or completed customer job is attributed to the supplied images.
 
 The request journey is preferred Pacific date/time, vehicle details, inbox delivery, and personal SMS/WhatsApp follow-up. Delivery is prepared through a configurable HTTPS adapter but remains in preview until a real endpoint and business contacts are verified. See REQUEST_SETUP.md.
 
@@ -17,7 +17,7 @@ Inspected the rendered desktop page at successive scroll positions, opened its n
 
 Observed patterns: oversized product imagery, dark and accent-color panels with large corner radii, component callouts changing with scroll progress, and a click-triggered newsletter dialog. The reference uses Webflow interactions plus jQuery state changes at scroll thresholds; many navigation links open the same newsletter dialog.
 
-Our adaptation uses an original SVG Chevy pickup illustration, separate wheel and rotor layers, native sticky positioning, and requestAnimationFrame transforms. It preserves normal touch/keyboard scrolling and renders a static scene for reduced-motion preferences. This is an illustrated treatment, not a photorealistic Chevrolet model or an affiliation claim. No reference artwork or code was copied.
+The earlier adaptation used an original SVG Chevy pickup illustration. That treatment has been removed. The current photographic adaptation retains native sticky positioning and requestAnimationFrame-driven transforms, using new wheel imagery and the owner's supplied service images. No reference artwork or code was copied, and no vehicle-manufacturer affiliation is implied.
 
 The popup is a native, click-triggered appointment-intake dialog. Real navigation remains functional. No automatic popup interrupts form entry. Newsletter collection is not implemented because the primary goal is service requests.
 
