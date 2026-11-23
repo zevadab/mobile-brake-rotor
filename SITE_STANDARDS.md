@@ -169,6 +169,7 @@ Assume most first visits come from a phone after a local Google search such as â
 - Keep important copy, service area, and request controls near the top of the mobile experience.
 - Use comfortable tap targets, readable text, short form steps, and minimal typing wherever possible.
 - Test the page at narrow phone widths before considering a feature complete.
+- Include 320px phones, short screens, landscape and orientation changes. Keep hero actions at least 44px high, form text at least 16px, and content clear of device safe areas. Hide the mobile action bar while quote fields have focus. Verify pinned scenes in Chromium and WebKit mobile emulation; real-device testing remains a useful release check.
 - Keep page title, description, headings, service names, cities served, and structured data aligned with real services and confirmed coverage.
 - Make the business name, service type, Inland Empire coverage, and contact action easy for both people and search engines to understand.
 - Avoid keyword stuffing, city-list spam, hidden text, or claims that are not operationally true.

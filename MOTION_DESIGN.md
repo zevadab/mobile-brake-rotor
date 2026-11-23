@@ -10,7 +10,9 @@ One native sticky stage on black, below the site header:
 
 The motion follows scroll position in both directions. It does not simulate a mechanically exact wheel disassembly. No autoplay, scroll interception, video, WebGL, or animation library is required. The effect is controlled by hero-motion.js, with CSS in styles.css.
 
-The runway is 300 small viewport heights on desktop and 270 on phones. Quote and pricing links bypass it. Small viewport height units keep mobile browser toolbar changes from jumping the scene. Reduced motion or disabled JavaScript removes the runway and later scenes. A single semantic h1 describes the service; changing visual captions and duplicate photos are hidden from assistive technology.
+The runway is 300 small viewport heights on desktop and 230 on phones, shortening the swipe distance to services. Quote and pricing links bypass it. Small viewport height units keep mobile browser toolbar changes from jumping the scene. The stage measures the actual header and mobile action bar, including safe-area insets, instead of assuming their heights. Reduced motion or disabled JavaScript removes the runway and later scenes. A single semantic h1 describes the service; changing visual captions and duplicate photos are hidden from assistive technology.
+
+Phone layouts use a less cropped wheel, larger captions, 48-pixel hero action targets and a swipe cue. The bottom action bar hides while a quote field has focus so it does not compete with the software keyboard; form fields retain 16-pixel text. Later hero photos have low fetch priority so the opening wheel loads first. After scroll progress reaches either end, the animation skips redundant style writes while visitors use the rest of the page.
 
 ## Asset and prompt
 

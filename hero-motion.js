@@ -10,11 +10,14 @@
  const progress = story.querySelector('.story-progress > span');
  const count = story.querySelector('.story-count');
  const header = document.querySelector('.site-header');
+ const mobileBar = document.querySelector('.mobile-bar');
+ const label = story.querySelector('.story-label');
  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
  let frame = 0;
  let travel = 1;
  let top = 0;
  let headerHeight = 0;
+ let previousProgress = -1;
  const clamp = value => Math.min(1, Math.max(0, value));
  const ease = (value, start, end) => {
   const t = clamp((value - start) / (end - start));
@@ -24,6 +27,9 @@
   frame = 0;
   if (reduced.matches) return;
   const p = clamp((scrollY - top + headerHeight) / travel);
+  // Once the scene is offscreen, leave its styles alone while the rest scrolls.
+  if (p === previousProgress) return;
+  previousProgress = p;
   const reveal = ease(p, .12, .44);
   const arrive = ease(p, .60, .87);
   const exitWheel = ease(p, .22, .43);
@@ -42,7 +48,7 @@
    copy[index].style.transform = `translateY(${(1 - opacity) * 20}px)`;
   });
   story.style.setProperty('--scene-progress', p);
-  story.querySelector('.story-label').style.opacity = 1 - reveal;
+  label.style.opacity = 1 - reveal;
   progress.style.transform = `scaleX(${p})`;
   count.textContent = `${p < .32 ? '01' : p < .73 ? '02' : '03'} — 03`;
  }
@@ -52,15 +58,17 @@
  function measure() {
   headerHeight = header.getBoundingClientRect().height;
   story.style.setProperty('--story-header', `${headerHeight}px`);
+  story.style.setProperty('--story-footer', `${mobileBar.getBoundingClientRect().height}px`);
   top = story.getBoundingClientRect().top + scrollY;
   travel = Math.max(1, story.offsetHeight - stage.offsetHeight);
   schedule();
  }
  function configure() {
   cancelAnimationFrame(frame); frame = 0;
+  previousProgress = -1;
   story.classList.toggle('motion-ready', !reduced.matches);
   if (reduced.matches) {
-   [wheel, brake, driveway, ...copy, progress, story.querySelector('.story-label')].forEach(el => el.removeAttribute('style'));
+   [wheel, brake, driveway, ...copy, progress, label].forEach(el => el.removeAttribute('style'));
   }
   measure();
  }
@@ -68,6 +76,8 @@
  addEventListener('resize', measure, {passive: true});
  addEventListener('pageshow', measure);
  reduced.addEventListener('change', configure);
- new ResizeObserver(measure).observe(header);
+ const resizeObserver = new ResizeObserver(measure);
+ resizeObserver.observe(header);
+ resizeObserver.observe(mobileBar);
  configure();
 })();
