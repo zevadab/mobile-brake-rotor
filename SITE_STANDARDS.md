@@ -1,15 +1,161 @@
-# The Mobile Brake & Rotor Guy — Site Standards
+# The Mobile Brake & Rotor Guy — Premium Site Standards v2
 
-## Purpose
+## North star
 
-This site is a trusted, fast touch point for customers in California’s Inland Empire who need brake or rotor service. Its primary job is to help a visitor quickly understand whether we can help, feel confident contacting us, and submit a complete request for an available appointment.
+The site should feel like a premium, owner-operated mobile service: one skilled professional personally coming to the customer, explaining the work clearly, and completing it with care.
 
-The site should always feel:
+It should feel personal—not like a fleet, franchise, lead marketplace, or generic repair-shop template.
 
-- Local, approachable, and professional
-- Clear about what is known versus what still needs confirmation
-- Focused on safety without creating unnecessary alarm
-- Fast to use on a phone, especially when a customer is roadside or between work appointments
+## Reference direction
+
+Use the reference site's strengths as inspiration for pacing and storytelling only:
+
+- Oversized visual hero
+- Strong product/service focal point
+- Short, confident copy blocks
+- Scroll-based progression through the service process
+- Numbered sections and clear visual rhythm
+- Smooth transitions between content sections
+- Persistent, easy-to-find booking/contact action
+
+Do not copy its layout, assets, text, branding, or visual identity. Adapt the pacing to a local automotive service business.
+
+## New visual standard
+
+Prioritize premium photorealistic automotive photography over illustrations, cartoon graphics, or generic stock images.
+
+Images should show:
+
+- One owner-operator technician
+- A rugged, experienced, approachable local mechanic
+- Clean long-sleeve work shirt, dark jeans, durable boots, work hat, beard, and shop rag when appropriate
+- One customer vehicle at a time
+- Domestic cars, trucks, and vans
+- Realistic wheels, tires, brake rotors, calipers, tools, and service conditions
+- Clean driveways, workplaces, or approved service locations
+- Personal attention and careful inspection
+- Southern California light and subtle Inland Empire context
+
+Images should not show:
+
+- Fleets of vehicles
+- Multiple technicians unless specifically needed
+- Corporate service centers
+- Generic auto-shop interiors
+- Racing imagery or exaggerated mechanical effects
+- Fake logos or readable AI-generated text
+- Unsafe lifting or roadside conditions
+
+## Premium composition rules
+
+- Use wide cinematic images with intentional negative space for copy.
+- Use close-up component photography for rotors, pads, tires, and inspection details.
+- Use human-centered process photography to reinforce trust.
+- Keep the navy, orange, graphite, and neutral California palette consistent.
+- Use orange sparingly as a visual signal for action and tools.
+- Avoid filling every area of the screen; premium design needs breathing room.
+- Use subtle depth, soft shadows, and restrained borders instead of decorative effects.
+
+## Page experience
+
+The homepage should tell a short visual story:
+
+1. **Need help?** — A premium hero showing the owner-operator at the customer’s truck.
+2. **What do we do?** — Clear brake and rotor services with a close-up brake image.
+3. **How does it work?** — Request, confirm, and receive service at your location.
+4. **Why choose us?** — Personal service, clear communication, and local coverage.
+5. **Ready to request service?** — A focused mobile quote form.
+
+## Motion and transitions
+
+Use smooth, restrained transitions:
+
+- Fade and slight upward reveal as sections enter the viewport
+- Gentle image scale from 1.02 to 1.0 on load
+- Subtle parallax only where it does not affect readability or performance
+- Smooth hover states on service cards and buttons
+- Numbered process steps that reveal sequentially
+- Sticky mobile Call, Text, and Request Quote actions
+
+Respect `prefers-reduced-motion`. Motion should support hierarchy, not become the attraction.
+
+## Copy standard
+
+Copy should be short, direct, and human.
+
+Preferred language:
+
+- “I come to you.”
+- “Your vehicle, your location, your schedule.”
+- “Clear recommendations before additional work.”
+- “Brake-focused service for domestic cars, trucks, and vans.”
+- “Owner-operated service with personal attention.”
+
+Avoid:
+
+- “We are a leading national provider.”
+- “Our fleet of technicians.”
+- Corporate or franchise language
+- Unverified guarantees, certifications, warranties, prices, 24/7 availability, or same-day claims
+- Fear-based brake messaging
+
+## Service hierarchy
+
+### Core services
+
+- Brake pads
+- Brake rotors
+- Brake fluid service
+- Brake inspections
+- Brake noise and vibration evaluation
+
+### Select maintenance add-ons
+
+- Oil changes
+- Oil filters
+- Cabin air filters
+- Battery replacements
+
+Always make clear that additional services depend on vehicle, parts, location, availability, and service conditions.
+
+## Trust and request flow
+
+The site must distinguish a request from a confirmed appointment.
+
+The customer should understand:
+
+- A form submission requests contact.
+- Availability is reviewed manually.
+- Vehicle and service fit must be confirmed.
+- Pricing and final recommendations are confirmed after review or inspection.
+
+## Technical quality bar
+
+- Mobile-first and fast on a cellular connection
+- High-quality images optimized for responsive delivery
+- Lazy-load below-the-fold photography
+- Use modern image formats where practical
+- Preserve accessible contrast and visible focus states
+- Maintain semantic headings and labeled controls
+- Keep phone, text, and quote actions persistent on mobile
+- No unnecessary video backgrounds or heavy animation libraries
+- Keep service, vehicle, area, contact, and policy data configurable
+
+## Asset direction
+
+Use the following asset roles:
+
+- `hero-owner-operator-brake-service.png` — primary hero or owner-operated story section
+- `hero-owner-operator-rugged-mechanic.png` — preferred hero treatment with the rugged trusted-mechanic identity
+- `owner-operator-truck-service.png` — process or trust section
+- `brake-rotor-closeup.png` — brake service detail section
+- `mobile-brake-process.png` — how-it-works or inspection section
+
+Before printing vehicle graphics or using the logo at large physical sizes, recreate the approved mark as production vector artwork and confirm final typography, clear space, and color output.
+
+## How these standards apply
+
+This v2 direction supersedes the previous illustrated truck/wheel sequence. The supplied guidelines are adopted as project design standards at the owner's request. The operational requirements below remain in effect. Keep the original brand logos unchanged.
 
 ## Mobile-first and local discovery standard
 
@@ -199,16 +345,16 @@ A request feature is ready when:
 - The feature works with keyboard navigation, screen readers, and reduced-motion settings.
 - Test data, sample reviews, and placeholder business details cannot be mistaken for live production data.
 
-## Scroll experience and concise conversion copy
-
-The approved direction now includes a short scroll-controlled truck, wheel and rotor illustration inspired by the eScooter reference. Keep native scrolling, an always-available quote action, a skip-to-services link, and a static reduced-motion fallback. Use click-triggered appointment dialogs rather than automatic marketing interruptions. Service descriptions should generally be one short sentence.
-
-Ballparks are competitor-informed budgeting ranges, not guaranteed business rates. Show the per-axle basis and make/model/parts/location caveat beside prices. Sources and review date live in DESIGN_NOTES.md. Do not convert these benchmarks into fixed offers without business confirmation.
-
-The form must remain explicitly marked as a preview until a backend accepts requests. Never display a delivered or booked success state for a local-only form.
-
 ## Current vehicle and service scope
 
 The current public positioning is brake-first mobile service for domestic/American cars, trucks, and vans. Supporting maintenance may include oil changes, oil filters, cabin air filters, and battery replacement when the vehicle, parts, location, and service conditions allow it.
 
 Do not imply that foreign, European, luxury, or every vehicle make is supported. Requests marked “Other” should remain reviewable without promising service. Keep additional maintenance visually secondary to brake and rotor work.
+
+## Request delivery and follow-up
+
+Initial flow: customer chooses a preferred day and time in Pacific Time, provides vehicle and contact details, and requests contact. The configured backend emails the request to the verified business inbox. The owner reviews it and personally texts the customer (SMS or WhatsApp, according to preference). A calendar preference never reserves a slot. No automatic booking or newsletter signup is implied.
+
+Until the inbox, WhatsApp number and delivery endpoint are configured and tested, keep the form in explicit preview mode. Display received status only after a backend acknowledgement; a browser-only check is not delivery. Public site-config.js contains contact settings only; email credentials stay server-side.
+
+Competitor-derived ballparks remain visibly labeled as market budgeting estimates, never fixed owner quotes. Source references are in DESIGN_NOTES.md.

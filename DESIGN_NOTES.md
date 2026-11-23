@@ -1,5 +1,13 @@
 # Scroll design and pricing references
 
+## Current direction — standards v2
+
+The owner supplied site-standards-v2.md and the preferred photorealistic mechanic hero. SITE_STANDARDS.md now incorporates that direction plus existing operational standards. The illustrated Chevy truck sequence described below is historical and has been removed from the page.
+
+Current design uses the supplied photograph with responsive WebP delivery, an accessible dark overlay on desktop, and separate copy/photo regions on phones. Motion is limited to a slight image settle and short section reveals, with reduced-motion support. No named identity or completed customer job is attributed to the supplied image.
+
+The request journey is preferred Pacific date/time, vehicle details, inbox delivery, and personal SMS/WhatsApp follow-up. Delivery is prepared through a configurable HTTPS adapter but remains in preview until a real endpoint and business contacts are verified. See REQUEST_SETUP.md.
+
 ## Direction
 
 Reference reviewed: https://escooter-booking.webflow.io/ (November 23, 2026).

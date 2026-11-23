@@ -12,48 +12,49 @@ document.addEventListener('keydown', event => {
  if (event.key === 'Escape') { nav.classList.remove('open'); menu.setAttribute('aria-expanded','false'); }
 });
 
-// Scroll position controls the illustration. Native scrolling is never intercepted.
-const story = document.querySelector('.drive-story');
-const stage = document.querySelector('.drive-stage');
-const body = document.querySelector('.truck-body');
-const wheel = document.querySelector('.front-wheel');
-const brake = document.querySelector('.brake-unit');
-const art = document.querySelector('.truck-art');
+// Restrained section reveals; content stays visible without JavaScript.
 const motion = matchMedia('(prefers-reduced-motion: reduce)');
-const clamp = n => Math.min(1, Math.max(0, n));
-const phases = [
- ['Your place. Our tools.', 'Home, work, or an approved location.'],
- ['A closer look.', 'Wheel off. Brake condition reviewed.'],
- ['Pads. Rotors. Sorted.', 'Service confirmed for your vehicle.']
-];
-let frame = null;
-function paintScene() {
- frame = null;
- const distance = story.offsetHeight - stage.offsetHeight;
- const top = parseFloat(getComputedStyle(stage).top) || 0;
- const progress = motion.matches ? 0 : clamp((top - story.getBoundingClientRect().top) / Math.max(1, distance));
- const separate = clamp((progress - .16) / .55);
- const reveal = clamp((progress - .48) / .4);
- wheel.style.transform = 'translate(' + (separate * -300) + 'px,' + (separate * -25) + 'px) rotate(' + (separate * -110) + 'deg)';
- body.style.opacity = 1 - reveal * .85;
- brake.style.transform = 'translate(' + (reveal * -110) + 'px,' + (reveal * -90) + 'px) scale(' + (1 + reveal * .75) + ')';
- art.style.transform = 'translateY(' + (-separate * 10) + 'px)';
- const phase = progress < .3 ? 0 : progress < .7 ? 1 : 2;
- document.querySelector('.scene-count').textContent = '0' + (phase + 1) + ' / 03';
- document.querySelector('#scene-title').textContent = phases[phase][0];
- document.querySelector('#scene-detail').textContent = phases[phase][1];
- document.querySelector('.progress-track i').style.width = progress * 100 + '%';
+const reveals = [...document.querySelectorAll('.section-heading,.price-card,.steps article,.personal-layout,.area-layout')];
+let observer;
+function configureMotion() {
+ observer?.disconnect();
+ reveals.forEach(element => element.classList.remove('reveal-pending'));
+ if (motion.matches || !('IntersectionObserver' in window)) return;
+ observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+   if (entry.isIntersecting) { entry.target.classList.remove('reveal-pending'); observer.unobserve(entry.target); }
+  });
+ }, {threshold: .08});
+ reveals.forEach((element, index) => {
+  if (element.getBoundingClientRect().top >= innerHeight) {
+   element.style.setProperty('--reveal-delay', (index % 3) * 70 + 'ms');
+   element.classList.add('reveal-pending'); observer.observe(element);
+  }
+ });
 }
-function queueScene() { if (frame === null) frame = requestAnimationFrame(paintScene); }
-addEventListener('scroll', queueScene, {passive:true});
-addEventListener('resize', queueScene);
-motion.addEventListener('change', queueScene);
-paintScene();
+configureMotion();
+motion.addEventListener('change', configureMotion);
+const config = window.SITE_CONFIG || {};
+const validPhone = value => /^\+[1-9]\d{7,14}$/.test(value || '');
+
 
 const booking = document.querySelector('#booking-dialog');
 const contact = document.querySelector('#contact-dialog');
 document.querySelectorAll('[data-open-booking]').forEach(button => button.addEventListener('click', () => booking.showModal()));
-document.querySelectorAll('[data-contact]').forEach(button => button.addEventListener('click', () => contact.showModal()));
+document.querySelectorAll('[data-contact]').forEach(button => button.addEventListener('click', () => {
+ if (validPhone(config.phone)) location.href = (button.dataset.contact === 'Call' ? 'tel:' : 'sms:') + config.phone;
+ else contact.showModal();
+}));
+if (validPhone(config.whatsapp)) {
+ document.querySelectorAll('[data-whatsapp]').forEach(link => {
+  link.hidden = false;
+  link.href = 'https://wa.me/' + config.whatsapp.slice(1);
+  link.target = '_blank'; link.rel = 'noopener noreferrer';
+ });
+}
+if (config.email || config.phone) {
+ document.querySelector('#business-contact').textContent = [config.phone, config.email].filter(Boolean).join(' · ');
+}
 document.querySelectorAll('dialog').forEach(dialog => {
  dialog.querySelectorAll('.dialog-close,.dialog-dismiss').forEach(button => button.addEventListener('click', () => dialog.close()));
  dialog.addEventListener('click', event => {
@@ -70,8 +71,16 @@ const status = document.querySelector('.form-status');
 document.querySelectorAll('[data-service]').forEach(link => link.addEventListener('click', () => {
  form.elements.service.value = link.dataset.service;
 }));
-const date = new Date();
-form.elements.date.min = [date.getFullYear(), String(date.getMonth()+1).padStart(2,'0'), String(date.getDate()).padStart(2,'0')].join('-');
+const pacificToday = () => new Intl.DateTimeFormat('en-CA', {timeZone:'America/Los_Angeles', year:'numeric', month:'2-digit', day:'2-digit'}).format(new Date());
+form.elements.date.min = pacificToday();
+const liveEndpoint = typeof config.requestEndpoint === 'string' && /^https:\/\//.test(config.requestEndpoint) ? config.requestEndpoint : null;
+const submitButton = form.querySelector('[type=submit]');
+if (liveEndpoint) {
+ submitButton.textContent = 'Request my quote';
+ document.querySelector('.preview-notice').textContent = 'Choose a preferred day. I’ll review your request and follow up by message. An appointment is confirmed only after we agree on a time.';
+ document.querySelector('#booking-dialog .field-note').textContent = 'A preferred date is a request, not a confirmed appointment.';
+}
+
 form.elements.vehicleType.addEventListener('change', () => {
  document.querySelector('#fit-note').textContent = form.elements.vehicleType.value === 'Other'
  ? 'You can submit for review. Service for this vehicle is not guaranteed.'
@@ -81,12 +90,12 @@ let busy = false;
 let lastSubmit = 0;
 try { lastSubmit = Number(sessionStorage.getItem('quote-preview-time')) || 0; } catch {}
 function error(message) { status.className = 'form-status error'; status.textContent = message; }
-form.addEventListener('submit', event => {
+form.addEventListener('submit', async event => {
  event.preventDefault();
  if (busy) return;
  status.className = 'form-status'; status.textContent = '';
  if (form.elements.website.value) return;
- if (Date.now() - lastSubmit < 60000) return error('Please wait one minute before previewing another request.');
+ if (Date.now() - lastSubmit < 60000) return error('Please wait one minute before submitting another request.');
  for (const input of form.querySelectorAll('input[type=text],input:not([type]),textarea')) {
   if (input.name !== 'website') input.value = input.value.trim();
  }
@@ -94,19 +103,40 @@ form.addEventListener('submit', event => {
  if (photo && (!['image/jpeg','image/png','image/webp'].includes(photo.type) || photo.size > 5*1024*1024)) {
   return error('Choose one JPG, PNG or WebP photo no larger than 5 MB.');
  }
+ form.elements.date.min = pacificToday();
  if (!form.checkValidity()) { error('Check the required fields and acknowledgement.'); form.reportValidity(); return; }
  const year = Number(form.elements.year.value);
  if (year < 1900 || year > new Date().getFullYear()+1) return error('Enter a valid vehicle year.');
  const digits = form.elements.phone.value.replace(/\D/g,'');
  if (digits.length < 10 || digits.length > 15) return error('Enter a phone number with 10 to 15 digits.');
  busy = true;
- const submit = form.querySelector('[type=submit]');
- submit.disabled = true; submit.textContent = 'Checking details…';
- // Placeholder adapter: no network call and no customer data stored.
- setTimeout(() => {
+ submitButton.disabled = true;
+ submitButton.textContent = liveEndpoint ? 'Sending request…' : 'Checking details…';
+ try {
+  if (liveEndpoint) {
+   const payload = new FormData(form);
+   payload.set('timeZone', 'America/Los_Angeles');
+   const controller = new AbortController();
+   const timeout = setTimeout(() => controller.abort(), 15000);
+   let response;
+   try {
+    response = await fetch(liveEndpoint, {method:'POST', body:payload, signal:controller.signal, credentials:'omit'});
+   } finally { clearTimeout(timeout); }
+   if (!response.ok) throw new Error(response.status === 429 ? 'Too many requests. Please wait a few minutes and try again.' : 'Your request could not be confirmed. Your details are still here; please try again.');
+   const receipt = await response.json();
+   if (receipt.received !== true) throw new Error('Delivery could not be confirmed. Please try again.');
+   status.textContent = 'Request received. I’ll review your details and message you about your quote and available times. Your appointment is not yet confirmed.';
+   form.reset();
+  } else {
+   status.textContent = 'Preview complete. Your details are valid, but nothing was emailed or booked. Once online requests are connected, I’ll review each request and follow up by text.';
+  }
   lastSubmit = Date.now();
   try { sessionStorage.setItem('quote-preview-time', String(lastSubmit)); } catch {}
-  status.textContent = 'Preview complete. Your details are valid, but nothing was sent and no appointment was booked. Online requests are coming soon.';
-  submit.disabled = false; submit.textContent = 'Preview my request'; busy = false;
- }, 400);
+ } catch (failure) {
+  error(failure.name === 'AbortError' ? 'Confirmation timed out. Delivery is uncertain; please avoid immediately sending a duplicate.' : failure.message === 'Failed to fetch' ? 'Unable to connect. Your details are still here. Please check your connection.' : failure.message);
+ } finally {
+  submitButton.disabled = false;
+  submitButton.textContent = liveEndpoint ? 'Request my quote' : 'Preview my request';
+  busy = false;
+ }
 });
