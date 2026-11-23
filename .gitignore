@@ -17,3 +17,6 @@ dist/
 build/
 coverage/
 .cache/
+reference-*.png
+qa-*.png
+test-results/

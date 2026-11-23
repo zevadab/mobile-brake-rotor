@@ -1,0 +1,28 @@
+# Scroll design and pricing references
+
+## Direction
+
+Reference reviewed: https://escooter-booking.webflow.io/ (November 23, 2026).
+Inspected the rendered desktop page at successive scroll positions, opened its newsletter dialog, and read its public interaction code.
+
+Observed patterns: oversized product imagery, dark and accent-color panels with large corner radii, component callouts changing with scroll progress, and a click-triggered newsletter dialog. The reference uses Webflow interactions plus jQuery state changes at scroll thresholds; many navigation links open the same newsletter dialog.
+
+Our adaptation uses an original SVG Chevy pickup illustration, separate wheel and rotor layers, native sticky positioning, and requestAnimationFrame transforms. It preserves normal touch/keyboard scrolling and renders a static scene for reduced-motion preferences. This is an illustrated treatment, not a photorealistic Chevrolet model or an affiliation claim. No reference artwork or code was copied.
+
+The popup is a native, click-triggered appointment-intake dialog. Real navigation remains functional. No automatic popup interrupts form entry. Newsletter collection is not implemented because the primary goal is service requests.
+
+## Market ballparks
+
+User requested competitor-based ranges. Public pages reviewed November 23, 2026:
+
+- https://supercanic.com/blog/brake-job-cost — Riverside County guide: pads $200–$400 per axle; pads and rotors $350–$700 per axle.
+- https://brakestogo.com/services/brake-pad-replacement/ — advertised pads $195, pads and rotors $429–$589, front or rear.
+- https://supercanic.com/services/brake-service — labor starts at $150 per axle, $200 for trucks/imports, parts additional. This labor-only offer is not treated as a total price.
+
+The homepage uses the Riverside County budgeting ranges for parts/labor. They are visibly market benchmarks rather than our fixed offers. Exact pricing, taxes, travel, vehicle conditions and parts are reviewed individually. Fluid service and inspection receive individual quotes rather than invented ranges.
+
+## Integration boundary
+
+The form remains a clearly labeled preview with no backend, no email delivery and no appointment confirmation. Phone and text buttons explain that the business number is pending instead of dialing placeholder strings. Replace these controls and the form adapter when verified business contact details and a submission provider are available.
+
+Public deployment is restricted to website assets and metadata in dist; screenshots and repository documentation are not deployed.
