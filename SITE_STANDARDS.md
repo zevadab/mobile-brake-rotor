@@ -22,6 +22,8 @@ Do not copy its layout, assets, text, branding, or visual identity. Adapt the pa
 
 ## New visual standard
 
+Current website theme: black and charcoal surfaces with light text and restrained orange accents, per the owner's latest direction. This supersedes light page backgrounds. Use dark form controls and dialogs with visible boundaries and focus rings. Keep photographs natural and approved logos unchanged; a small light logo backplate is permitted for navy artwork legibility.
+
 Prioritize premium photorealistic automotive photography over illustrations, cartoon graphics, or generic stock images.
 
 Images should show:
