@@ -4,7 +4,7 @@
 
 - **Business name:** The Mobile Brake & Rotor Guy
 - **Primary tagline:** Professional Brake Service That Comes to You.
-- **Positioning:** Mobile brake-focused service for domestic cars, trucks, and vans throughout Southern California’s Inland Empire.
+- **Positioning:** Mobile brake-focused service for cars, trucks, and vans throughout Southern California’s Inland Empire. Vehicle compatibility is confirmed individually when the customer contacts us.
 - **Brand personality:** Professional, friendly, local, transparent, dependable, and safety-focused.
 
 ## Approved logo direction
@@ -44,7 +44,7 @@ The approved direction is Concept 2: a brake rotor with an integrated wrench.
 - **Secondary CTA:** Call or Text
 - **Primary services:** Brake pads, rotors, brake fluid service, brake inspections, brake noise and vibration evaluation.
 - **Additional services:** Oil changes, oil filters, cabin air filters, and battery replacements when appropriate and available.
-- **Vehicle scope:** Domestic/American cars, trucks, and vans.
+- **Vehicle scope:** Cars, trucks, and vans. Do not restrict messaging by country of manufacture or promise support for every make. Review the year, make, model and requested service with each potential customer.
 - **Service area:** Southern California Inland Empire; customers should confirm location availability.
 
 ## Asset usage

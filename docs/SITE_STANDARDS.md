@@ -32,7 +32,7 @@ Images should show:
 - A rugged, experienced, approachable local mechanic
 - Clean long-sleeve work shirt, dark jeans, durable boots, work hat, beard, and shop rag when appropriate
 - One customer vehicle at a time
-- Domestic cars, trucks, and vans
+- Cars, trucks, and vans
 - Realistic wheels, tires, brake rotors, calipers, tools, and service conditions
 - Clean driveways, workplaces, or approved service locations
 - Personal attention and careful inspection
@@ -102,7 +102,7 @@ Preferred language:
 - “I come to you.”
 - “Your vehicle, your location, your schedule.”
 - “Clear recommendations before additional work.”
-- “Brake-focused service for domestic cars, trucks, and vans.”
+- “Brake-focused service for cars, trucks, and vans.”
 - “Owner-operated service with personal attention.”
 
 Avoid:
@@ -316,9 +316,9 @@ Before launch or paid promotion, replace and verify:
 
 ## Current vehicle and service scope
 
-The current public positioning is brake-first mobile service for domestic/American cars, trucks, and vans. Supporting maintenance may include oil changes, oil filters, cabin air filters, and battery replacement when the vehicle, parts, location, and service conditions allow it.
+The current public positioning is brake-first mobile service for cars, trucks, and vans, with vehicle compatibility confirmed individually upon contact. Supporting maintenance may include oil changes, oil filters, cabin air filters, and battery replacement when the vehicle, parts, location, and service conditions allow it.
 
-Do not imply that foreign, European, luxury, or every vehicle make is supported. Other vehicles can be discussed in chat without promising service. Keep additional maintenance visually secondary to brake and rotor work.
+Do not publish domestic-only restrictions or exclude vehicles by country of manufacture. Invite every potential customer to share the year, make, model and service needed; the owner decides whether the job can be supported during the conversation. Do not promise service for every make or model. Apply this consistently to both languages, search/social metadata and structured data. Keep additional maintenance visually secondary to brake and rotor work.
 
 ## Messaging follow-up
 
