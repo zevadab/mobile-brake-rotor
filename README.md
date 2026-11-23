@@ -55,3 +55,5 @@ Read [site standards](docs/SITE_STANDARDS.md), [brand guidelines](docs/BRAND_GUI
 ## Deployment
 
 Push approved work to `main`. The [Pages workflow](.github/workflows/pages.yml) builds the site, runs the checks and uploads only `dist/`. The public English/Spanish URLs, domain configuration and optimized-image URLs remain unchanged by this reorganization.
+
+The deployment job depends on the build job. If deployment needs a retry, rerun the failed deployment job so GitHub can reuse the completed build artifact.
