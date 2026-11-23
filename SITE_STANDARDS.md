@@ -198,3 +198,9 @@ A request feature is ready when:
 - Safety and service disclaimers appear at the point of decision.
 - The feature works with keyboard navigation, screen readers, and reduced-motion settings.
 - Test data, sample reviews, and placeholder business details cannot be mistaken for live production data.
+
+## Current vehicle and service scope
+
+The current public positioning is brake-first mobile service for domestic/American cars, trucks, and vans. Supporting maintenance may include oil changes, oil filters, cabin air filters, and battery replacement when the vehicle, parts, location, and service conditions allow it.
+
+Do not imply that foreign, European, luxury, or every vehicle make is supported. Requests marked “Other” should remain reviewable without promising service. Keep additional maintenance visually secondary to brake and rotor work.
