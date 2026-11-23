@@ -8,8 +8,8 @@ English and Spanish mobile brake-service website, published from `main` through 
 src/
   index.html              English page template
   styles/styles.css       Responsive styles
-  scripts/script.js       Navigation, dialogs and request form
-  scripts/site-config.js  Public contact and endpoint settings
+  scripts/script.js       Navigation and section reveals
+  scripts/site-config.js  Public business chat destinations
   i18n/es.json             Spanish translations
 public/
   assets/brand/           Logos used by the website
@@ -46,9 +46,9 @@ The build replaces only this project's generated `dist/` directory. It generates
 
 - Page content: [src/index.html](src/index.html). Keep the matching Spanish copy in [src/i18n/es.json](src/i18n/es.json); the build rejects missing page translations.
 - Appearance: [src/styles/styles.css](src/styles/styles.css).
-- Business phone, WhatsApp, email and intake endpoint: [src/scripts/site-config.js](src/scripts/site-config.js). These settings are public; never add credentials.
+- WhatsApp Business number and Facebook Messenger URL: [src/scripts/site-config.js](src/scripts/site-config.js). These settings are public; never add credentials.
 - Images: place optimized files in `public/assets/`, and retain source artwork in `design/originals/`. HTML uses published URLs such as `assets/photography/hero-1440.webp`.
-- Request delivery: follow [docs/REQUEST_SETUP.md](docs/REQUEST_SETUP.md). The form remains in preview until a real endpoint is connected and verified.
+- Messaging setup: follow [docs/REQUEST_SETUP.md](docs/REQUEST_SETUP.md). Both chat channels are currently unconfigured and labeled coming soon. Add verified destinations and rebuild to activate native links; no contact form or backend is used.
 
 Read [site standards](docs/SITE_STANDARDS.md), [brand guidelines](docs/BRAND_GUIDELINES.md), [design notes](docs/DESIGN_NOTES.md), [hero treatment](docs/MOTION_DESIGN.md), and [photography notes](docs/PHOTOGRAPHY.md) before changing those areas.
 

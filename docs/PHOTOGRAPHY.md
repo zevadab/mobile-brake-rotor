@@ -17,7 +17,7 @@ Four additional owner-supplied originals are retained with responsive WebP deriv
 | brake-rotor-closeup | Services introduction | Portrait close-up: rotor is the focal point, with a visible support stand in the original. Position around 42% vertically to keep the component visible in wide slots. |
 | owner-operator-truck-service | Process introduction | Wide driveway context with wheel and technician on the right. Keep that area visible on narrow screens. |
 | owner-operator-explaining-service | Personal service | Conversation occupies the right side. Right-focused framing keeps both people and the brake assembly together. |
-| brake-service-detail-owner-operator | Hero detail inset and request dialog | Tight hands/component view supports a compact inset without duplicating the main hero photograph. |
+| brake-service-detail-owner-operator | Hero detail inset | Tight hands/component view supports a compact inset without duplicating the main hero photograph. |
 
 The warm light, navy clothing and orange tools form a coherent visual family. Use each photo for a distinct role rather than repeating hero imagery. These are descriptive brand visuals, not verified customer testimonials or documentation of a particular completed job.
 

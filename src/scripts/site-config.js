@@ -1,7 +1,6 @@
 // Public business settings only. Never put SMTP passwords or API secrets here.
 window.SITE_CONFIG = Object.freeze({
-  phone: '', // International format, e.g. +1 followed by the ten-digit number.
-  whatsapp: '', // Verified WhatsApp number in the same format.
-  email: '', // Confirm the Zoho business inbox before publishing.
-  requestEndpoint: '', // HTTPS backend/form adapter; see docs/REQUEST_SETUP.md.
+  whatsapp: '', // Verified business number: +country code followed by digits only.
+  messengerUrl: '', // Verified business chat URL: https://m.me/YourBusinessPage
+  // Leave blank until ready. Rebuild to activate links; see docs/REQUEST_SETUP.md.
 });

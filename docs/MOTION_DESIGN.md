@@ -5,7 +5,7 @@
 The owner has retired the tire-centered pinned sequence and returned to the original mechanic photograph.
 
 - Desktop: the driveway scene fills the opening, with large left-aligned copy, a directional dark overlay and warm neutral highlights.
-- Phone: the mechanic photograph comes first, followed by copy, quote/pricing actions and a compact service-detail link in normal document flow.
+- Phone: the mechanic photograph comes first, followed by copy, WhatsApp/Messenger buttons and a pricing link and a compact service-detail link in normal document flow.
 - A small brake-detail photo links to the service process. It adds variation without competing with the mechanic.
 - Motion is a one-time 1.025-to-1 photo settle and existing section reveals. Reduced-motion visitors get a static image.
 - The page has no pinned hero, scroll runway, scroll interception, or dedicated hero JavaScript. Content remains visible without JavaScript.
@@ -18,7 +18,7 @@ Check English and Spanish pages in Chromium and WebKit at desktop, 320px phones,
 
 GitHub Pages runs scripts/build-site.mjs to package public assets. Both language pages reference content-hashed CSS and JavaScript so newly fetched markup does not reuse an older cached stylesheet. Run node scripts/build-site.mjs and node --test tests/build-site.test.mjs before publishing.
 
-Forms and business-contact configuration remain governed by REQUEST_SETUP.md.
+Business-chat configuration remain governed by REQUEST_SETUP.md.
 
 ## Archived wheel asset provenance
 

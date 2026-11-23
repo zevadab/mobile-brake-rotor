@@ -22,7 +22,7 @@ Do not copy its layout, assets, text, branding, or visual identity. Adapt the pa
 
 ## New visual standard
 
-Current website theme: black and charcoal surfaces with light text and restrained orange accents, per the owner's latest direction. This supersedes light page backgrounds. Use dark form controls and dialogs with visible boundaries and focus rings. Keep photographs natural and approved logos unchanged; a small light logo backplate is permitted for navy artwork legibility.
+Current website theme: black and charcoal surfaces with light text and restrained orange accents, per the owner's latest direction. This supersedes light page backgrounds. Use dark chat controls with visible boundaries and focus rings. Keep photographs natural and approved logos unchanged; a small light logo backplate is permitted for navy artwork legibility.
 
 Prioritize premium photorealistic automotive photography over illustrations, cartoon graphics, or generic stock images.
 
@@ -66,7 +66,7 @@ The homepage should tell a short visual story:
 2. **What do we do?** — Clear brake and rotor services with a close-up brake image.
 3. **How does it work?** — Request, confirm, and receive service at your location.
 4. **Why choose us?** — Personal service, clear communication, and local coverage.
-5. **Ready to request service?** — A focused mobile quote form.
+5. **Ready to request service?** — Direct WhatsApp and Facebook Messenger buttons.
 
 ## Motion and transitions
 
@@ -77,9 +77,9 @@ Use smooth, restrained transitions:
 - Subtle parallax only where it does not affect readability or performance
 - Smooth hover states on service cards and buttons
 - Numbered process steps that reveal sequentially
-- Sticky mobile Call, Text, and Request Quote actions
+- Sticky mobile WhatsApp and Messenger actions
 
-The owner's current direction is personal and photographic. The mechanic leads the opening, with subtle image settling and a small brake-detail inset for variation. The tire-centered hero and pinned scroll sequence are retired. Use natural document scrolling, short copy, and visible quote/pricing actions. Do not intercept touch, wheel, or keyboard scrolling.
+The owner's current direction is personal and photographic. The mechanic leads the opening, with subtle image settling and a small brake-detail inset for variation. The tire-centered hero and pinned scroll sequence are retired. Use natural document scrolling, short copy, and visible chat/pricing actions. Do not intercept touch, wheel, or keyboard scrolling.
 
 Respect `prefers-reduced-motion`: disable the image settle and section reveals. The complete opening must remain usable without JavaScript. On phones, lead with the owner photograph, followed by readable copy and actions in normal flow; never constrain the content to a fixed viewport height. See MOTION_DESIGN.md for the current treatment and asset provenance.
 
@@ -87,10 +87,10 @@ Respect `prefers-reduced-motion`: disable the image settle and section reveals. 
 
 - Display a visible English/Spanish switch and “Se habla español” availability message.
 - English source is src/index.html. Spanish copy is maintained in src/i18n/es.json; scripts/render-spanish.mjs generates es.html during the build. Do not manually edit dist/es.html.
-- Translate complete customer journeys: content, alt text, menus, forms, consent, pricing qualifications, safety language, dialogs and request states. The build rejects untranslated new page text.
-- Keep form field names and service values stable across languages. Collect preferred follow-up language independently from page language.
+- Translate complete customer journeys: content, alt text, menus, chat availability, pricing qualifications and safety language. The build rejects untranslated new page text.
+- Both English and Spanish pages link to the same verified business accounts. Customers can discuss their preferred language in the chat.
 - Both pages require correct language metadata, canonical URLs and reciprocal hreflang links. Keep both in the sitemap.
-- Test Spanish copy on narrow phones, including the owner hero, navigation, form validation and delivery errors. Browser-owned file/date picker controls follow the device language.
+- Test Spanish copy on narrow phones, including the owner hero, navigation and chat actions.
 - For local bilingual review, run node scripts/build-site.mjs, then serve dist (for example: python -m http.server 4173 --bind 127.0.0.1 --directory dist). Serve the built site, not src/index.html or the repository root.
 
 ## Copy standard
@@ -138,7 +138,7 @@ The site must distinguish a request from a confirmed appointment.
 
 The customer should understand:
 
-- A form submission requests contact.
+- A message starts a conversation; opening a link does not send a message.
 - Availability is reviewed manually.
 - Vehicle and service fit must be confirmed.
 - Pricing and final recommendations are confirmed after review or inspection.
@@ -151,7 +151,7 @@ The customer should understand:
 - Use modern image formats where practical
 - Preserve accessible contrast and visible focus states
 - Maintain semantic headings and labeled controls
-- Keep phone, text, and quote actions persistent on mobile
+- Keep WhatsApp and Messenger actions persistent on mobile
 - No unnecessary video backgrounds or heavy animation libraries
 - Keep service, vehicle, area, contact, and policy data configurable
 
@@ -175,16 +175,16 @@ The owner has returned to the personal mechanic hero with photographic variation
 
 Assume most first visits come from a phone after a local Google search such as “brake service near me,” “mobile brake repair,” or “rotor replacement Inland Empire.” Mobile conversion and local trust take priority over decorative desktop treatments.
 
-- Keep the primary phone, text, and quote actions visible without requiring desktop navigation.
+- Keep the primary WhatsApp and Messenger actions visible without requiring desktop navigation.
 - Keep important copy, service area, and request controls near the top of the mobile experience.
-- Use comfortable tap targets, readable text, short form steps, and minimal typing wherever possible.
+- Use comfortable tap targets, readable text, clear chat destinations, and minimal typing wherever possible.
 - Test the page at narrow phone widths before considering a feature complete.
-- Include 320px phones, short screens, landscape and orientation changes. Keep hero actions at least 44px high, form text at least 16px, and content clear of device safe areas. Hide the mobile action bar while quote fields have focus. Verify the photo crop, readable copy and normal scrolling in Chromium and WebKit mobile emulation; real-device testing remains a useful release check.
+- Include 320px phones, short screens, landscape and orientation changes. Keep hero actions at least 44px high, readable chat labels, and content clear of device safe areas. Verify the photo crop, readable copy and normal scrolling in Chromium and WebKit mobile emulation; real-device testing remains a useful release check.
 - Keep page title, description, headings, service names, cities served, and structured data aligned with real services and confirmed coverage.
 - Make the business name, service type, Inland Empire coverage, and contact action easy for both people and search engines to understand.
 - Avoid keyword stuffing, city-list spam, hidden text, or claims that are not operationally true.
-- Optimize images and scripts so a customer on a mobile network can reach the quote action quickly.
-- Preserve a clear path from a Google Business Profile visit to call, text, directions or service request.
+- Optimize images and scripts so a customer on a mobile network can reach the chat action quickly.
+- Preserve a clear path from a Google Business Profile visit to a business chat.
 
 ## Primary customer path
 
@@ -192,49 +192,24 @@ Every page and feature should support this path:
 
 1. **Recognize the need** — The customer sees a brake symptom or knows maintenance is due.
 2. **Confirm fit** — They understand that we provide mobile brake and rotor service in their area.
-3. **Request contact** — They submit vehicle, symptom, location, and timing details.
+3. **Request contact** — They share vehicle, symptom, location, and timing details in WhatsApp or Messenger.
 4. **Confirm availability** — The business reviews the request and confirms whether the location, service, and requested time can be supported.
 5. **Prepare for service** — The customer receives clear next steps, expectations, and safety guidance.
 6. **Complete the visit** — The technician performs the agreed inspection or service and communicates any change in scope before additional work.
 
-The site must distinguish a **request** from a **confirmed appointment**. A form submission never guarantees availability, price, diagnosis, or completion of service.
+The site must distinguish a **request** from a **confirmed appointment**. A message never guarantees availability, price, diagnosis, or completion of service.
 
-## Customer request requirements
+## Customer contact requirements
 
-The quote/request experience should collect enough information for a useful first response without becoming burdensome on mobile.
-
-### Required request fields
-
-- Full name
-- Phone number
-- Email address
-- City and service location
-- Vehicle year, make, and model
-- Service needed or “not sure” selection
-- Description of brake concern
-- Preferred appointment date and time
-- Consent acknowledging that the submission is a request for contact, not an appointment guarantee
-
-### Optional request fields
-
-- Photos or short videos of visible brake issues
-- License plate or VIN, only when operationally necessary
-- Preferred contact method
-- Additional location notes, such as parking, gate, or access instructions
-
-### Request states
-
-Future request handling should support these states:
-
-- **Draft** — Form is being completed locally and has not been submitted.
-- **Received** — Request reached the business system.
-- **Needs information** — More vehicle, symptom, or location detail is needed.
-- **Availability pending** — The request is being reviewed for schedule and service fit.
-- **Proposed** — A time window and expected service path were offered.
-- **Confirmed** — The customer accepted the appointment details.
-- **Completed** — Service visit is finished.
-- **Cancelled** — Request or appointment was cancelled.
-- **Unable to service** — Location, vehicle, safety, or scope is outside current capability.
+- The hero, contact section and mobile action bar each offer WhatsApp and Facebook Messenger.
+- Remove on-site contact forms, date pickers, intake dialogs, automatic popups and email/SMS delivery adapters.
+- Guide customers to share year, make, model, city, symptoms and preferred day within the chosen chat.
+- The owner replies personally and confirms scope, pricing and appointment availability there.
+- Public destinations belong in src/scripts/site-config.js. Never invent a phone number or business Page.
+- Blank destinations remain native disabled buttons labeled “Coming soon” / “Próximamente.” Do not use dummy links or simulate successful delivery.
+- A configured destination becomes a native link during the build, works without JavaScript, and clearly indicates opening a new tab.
+- WhatsApp uses a verified international business number; Messenger uses a verified https://m.me/PageUsernameOrId URL.
+- Neither opening a chat nor sending a message guarantees an appointment or response time.
 
 ## Service and safety language
 
@@ -257,9 +232,9 @@ The disclaimer is guidance, not a substitute for emergency services or a profess
 
 ### Service-process disclaimer
 
-Use this or a reviewed equivalent near the quote form:
+Use this or a reviewed equivalent near the messaging buttons:
 
-> Submitting this form requests contact. It does not guarantee an appointment, availability, price, diagnosis, parts selection, or completion of service. Final recommendations and pricing are confirmed after reviewing the vehicle, requested work, location, and service conditions.
+> Sending a message requests contact. It does not guarantee an appointment, availability, price, diagnosis, parts selection, or completion of service. Final recommendations and pricing are confirmed after reviewing the vehicle, requested work, location, and service conditions.
 
 ## Content standards
 
@@ -270,14 +245,14 @@ Use this or a reviewed equivalent near the quote form:
 - Never publish fictional testimonials as real customer reviews.
 - Do not imply that every listed city is always available; invite customers to confirm coverage.
 - Avoid fear-based copy, racing imagery, excessive technical jargon, and aggressive sales language.
-- Keep phone, text, and quote actions visible and easy to tap on mobile.
+- Keep WhatsApp and Messenger actions visible and easy to tap on mobile.
 
 ## Design and accessibility standards
 
 - Maintain the navy, orange, charcoal, white, and light-gray brand system.
 - Use strong contrast and visible focus states.
 - Use semantic headings in logical order.
-- Every form control needs a visible label and a useful validation message.
+- Every chat control needs a visible platform label and an honest availability state.
 - Touch targets should be comfortably tappable on small screens.
 - Do not rely on color alone to communicate errors, success, or required actions.
 - Keep motion subtle and respect `prefers-reduced-motion` when animations are added.
@@ -285,26 +260,13 @@ Use this or a reviewed equivalent near the quote form:
 
 ## Feature roadmap
 
-### Next customer-facing features
+1. Configure the verified WhatsApp Business number and Facebook Page Messenger URL.
+2. Test both links on a real phone and confirm that each opens the intended business conversation.
+3. Confirm business hours and service coverage before publishing them.
+4. Add verified reviews and consented service photos when available.
+5. Add service-specific landing pages when useful for local discovery.
 
-1. Connect quote submissions to a secure email, CRM, or backend endpoint.
-2. Add request confirmation messaging and an internal request ID.
-3. Add availability review tools for the business before showing appointment times.
-4. Add SMS/email follow-up notifications after a request is received.
-5. Add service-specific landing pages for brake pads, rotors, inspections, and diagnosis.
-6. Replace sample reviews with verified customer feedback and consented vehicle details.
-7. Add service-area pages after the actual radius and availability rules are confirmed.
-8. Add analytics for quote starts, completed requests, call taps, text taps, and conversion by device.
-
-### Future operational features
-
-- Customer accounts and request history
-- Calendar integration and appointment confirmation
-- Secure photo uploads
-- Pricing packages with clear scope and exclusions
-- Payment or deposit support, if the business chooses to offer it
-- Before-and-after service photos with customer permission
-- Google Business Profile and review-request integration
+Forms, calendars, customer accounts and automatic notifications are outside the current contact flow. Only add them if the owner requests them again.
 
 ## Technical standards
 
@@ -316,35 +278,23 @@ Use this or a reviewed equivalent near the quote form:
 
 - Keep customer-facing copy and business claims easy to update.
 - Deploy CSS and JavaScript using content-hashed filenames generated by scripts/build-site.mjs. Updated markup must not depend on a browser discarding an older stylesheet. Verify the built artifact as well as the local source page.
-- Separate service data, city data, FAQ content, and form configuration from presentation where practical.
-- Treat phone numbers, email addresses, hours, service radius, and policy text as replaceable configuration.
-- Validate and sanitize all submitted data once a backend is connected.
+- Separate service data, city data, FAQ content, and contact configuration from presentation where practical.
+- Treat messaging destinations, hours, service radius, and policy text as replaceable configuration.
 - Do not store customer information in client-side logs or analytics events.
-- Use secure upload handling for photos and apply file type, size, and retention rules.
 - Preserve clean future routes such as `/services`, `/service-area`, `/contact`, and `/faq`.
-- Keep the current static prototype usable while backend integrations are developed.
+- Keep native contact links usable without JavaScript. Validate public destinations at build time.
 
-## Form abuse and request-volume protection
+## Messaging and privacy boundary
 
-The browser can improve the experience, but it cannot be the final security boundary. Once the form is connected to a real endpoint, apply protection on the server or form provider as well:
+The website collects no contact information and has no submission endpoint, upload handler, calendar, email delivery or browser storage for leads. Customer conversations take place on WhatsApp or Facebook Messenger under the chosen platform's controls and policies. Do not embed chat SDKs or track message contents.
 
-- Rate-limit by IP, email, and phone; start with a conservative limit such as a few requests per hour per signal.
-- Add bot detection or a managed challenge only when spam volume justifies the added friction.
-- Keep the honeypot field and reject submissions that fill it.
-- Enforce the same field length, file type, and file size limits server-side.
-- Accept only JPEG, PNG, or WebP photos and start with a 5 MB maximum.
-- Validate and sanitize all text before storing, emailing, or displaying it.
-- Do not send uploaded files directly to staff inboxes without scanning and controlled storage.
-- Deduplicate repeated requests and alert staff to suspicious bursts rather than forwarding every message.
-- Log request status and abuse signals without storing unnecessary personal data.
-- Never rely on hidden fields, client-side cooldowns, or JavaScript validation alone.
+Direct links do not prevent platform spam. The owner manages incoming messages, blocking and reporting inside the business accounts. Do not claim that the website filters or rate-limits those conversations.
 
 ## Placeholder replacement checklist
 
 Before launch or paid promotion, replace and verify:
 
-- Phone number and text number
-- Email address
+- WhatsApp Business number and Facebook Messenger URL
 - Business hours
 - Website URL and logo URL in structured data
 - Actual service radius and city availability
@@ -352,31 +302,28 @@ Before launch or paid promotion, replace and verify:
 - Warranty, parts, and workmanship policies, if offered
 - Privacy Policy and Terms of Service
 - Verified reviews and review dates
-- Form submission endpoint and notification workflow
+- Both chat destinations, tested against the intended business account
 
-## Definition of done for a customer request feature
+## Definition of done for messaging
 
-A request feature is ready when:
-
-- A mobile visitor can complete it quickly and understand every required field.
-- Validation explains how to fix incomplete or invalid information.
-- The customer receives a clear success or failure state.
-- The business receives the request with all submitted details and timestamp.
-- The flow does not imply that an appointment is confirmed before review.
-- Safety and service disclaimers appear at the point of decision.
-- The feature works with keyboard navigation, screen readers, and reduced-motion settings.
-- Test data, sample reviews, and placeholder business details cannot be mistaken for live production data.
+- Both chat controls are visible in the hero and easy to tap on a phone.
+- Empty configuration has an honest unavailable state; configured links work without JavaScript.
+- English and Spanish copy, metadata and accessible labels stay consistent.
+- The site does not collect customer details or imply delivery/booking on a link click.
+- Appointment and pricing qualifications remain close to contact actions.
+- Verify narrow phones, the iPhone 16 Pro viewport, desktop, keyboard navigation and reduced motion.
+- Before marking a channel operational, verify its destination on a real device with the business owner.
 
 ## Current vehicle and service scope
 
 The current public positioning is brake-first mobile service for domestic/American cars, trucks, and vans. Supporting maintenance may include oil changes, oil filters, cabin air filters, and battery replacement when the vehicle, parts, location, and service conditions allow it.
 
-Do not imply that foreign, European, luxury, or every vehicle make is supported. Requests marked “Other” should remain reviewable without promising service. Keep additional maintenance visually secondary to brake and rotor work.
+Do not imply that foreign, European, luxury, or every vehicle make is supported. Other vehicles can be discussed in chat without promising service. Keep additional maintenance visually secondary to brake and rotor work.
 
-## Request delivery and follow-up
+## Messaging follow-up
 
-Initial flow: customer chooses a preferred day and time in Pacific Time, provides vehicle and contact details, and requests contact. The configured backend emails the request to the verified business inbox. The owner reviews it and personally texts the customer (SMS or WhatsApp, according to preference). A calendar preference never reserves a slot. No automatic booking or newsletter signup is implied.
+Customers start a conversation through a configured WhatsApp or Messenger link. The owner reviews their vehicle, city, concern and preferred day, then confirms details personally in that conversation. No automatic booking, email intake, newsletter subscription or SMS follow-up is implied.
 
-Until the inbox, WhatsApp number and delivery endpoint are configured and tested, keep the form in explicit preview mode. Display received status only after a backend acknowledgement; a browser-only check is not delivery. src/scripts/site-config.js contains public contact settings only; email credentials stay server-side.
+Until both business accounts are configured and verified, keep their respective buttons labeled as coming soon. See REQUEST_SETUP.md. Public configuration contains no account credentials.
 
 Competitor-derived ballparks remain visibly labeled as market budgeting estimates, never fixed owner quotes. Source references are in DESIGN_NOTES.md.

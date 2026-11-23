@@ -8,10 +8,9 @@ const unchanged = new Set([
 ]);
 
 // Controlled static template: translate text and accessible labels, never IDs,
-// service values, URLs or scripts. Fail a build when new prose lacks translation.
+// URLs or scripts. Fail a build when new prose lacks translation.
 export function renderSpanish(english, translations) {
- let html = english.replace(/<option>([^<]+)<\/option>/g, (_, text) =>
-  '<option value="' + escape(decode(text)) + '">' + text + '</option>');
+ let html = english;
  const missing = new Set();
  html = html.split(/(<script\b[^>]*>[\s\S]*?<\/script>|<[^>]+>)/gi).map(part => {
   if (part.startsWith('<')) return part;
@@ -27,8 +26,7 @@ export function renderSpanish(english, translations) {
  html = html.replace('<html lang="en">', '<html lang="es">')
   .replace('<link rel="canonical" href="https://themobilebrakerotorguy.com/">', '<link rel="canonical" href="https://themobilebrakerotorguy.com/es.html">')
   .replace('<meta property="og:url" content="https://themobilebrakerotorguy.com/">', '<meta property="og:url" content="https://themobilebrakerotorguy.com/es.html">')
-  .replace(/<a class="language-switch"[^>]*>[^<]*<\/a>/, '<a class="language-switch" href="./" lang="en" hreflang="en" aria-label="View this site in English">English</a>')
-  .replace('<option value="es">', '<option value="es" selected>');
+  .replace(/<a class="language-switch"[^>]*>[^<]*<\/a>/, '<a class="language-switch" href="./" lang="en" hreflang="en" aria-label="View this site in English">English</a>');
  html = html.replace(/(<script type="application\/ld\+json">)([\s\S]*?)(<\/script>)/, (_, open, json, close) => {
   const data = JSON.parse(json);
   data.description = translations[data.description];

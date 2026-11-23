@@ -1,37 +1,24 @@
-# Request email and personal text follow-up
+# Direct business messaging
 
-## Current status
+The website uses WhatsApp and Facebook Messenger for customer contact. It has no contact form, calendar, booking popup, email delivery adapter or stored customer details.
 
-The form has a native date picker and time preference in Pacific Time, plus SMS/WhatsApp follow-up preference. It does not show live availability or reserve a calendar slot.
+## Activate the buttons
 
-Requests remain in preview mode because the business number, Zoho inbox and email-delivery endpoint have not been supplied. Nothing is sent in preview mode; no customer data is saved in browser storage. A session timestamp supports the local cooldown.
+1. Finish setting up the business account for each channel you want to use.
+2. Confirm the WhatsApp Business number, including its country code. Use a leading + and digits only, without spaces or punctuation.
+3. Get the business Page's Messenger URL, in the form https://m.me/PageUsernameOrId. Check that it opens the business conversation, not a personal profile.
+4. Update the public fields in `src/scripts/site-config.js`: `whatsapp` and `messengerUrl`. Leave an unready channel blank. Never add a password, API key or access token.
+5. Run `node scripts/build-site.mjs` and `node --test tests/build-site.test.mjs`. Preview `dist/` locally.
+6. Check both English and Spanish. Configured buttons show “Open chat” / “Abrir chat”; blank channels show “Coming soon” / “Próximamente” and remain disabled. The two channels can launch independently.
+7. Push to `main`. GitHub Actions builds and publishes through the existing Pages workflow.
+8. On a real phone, open each link and verify the intended business account. Check the platform's browser/sign-in experience as well. Opening a link does not send a message.
 
-## Public configuration
+The build validates destinations and renders native links in the hero, contact section and mobile action bar. They work without JavaScript and open in a new tab with `noopener noreferrer`. No chat SDK is loaded.
 
-Edit src/scripts/site-config.js once details are verified, then rebuild the site:
+WhatsApp links use `https://wa.me/` followed by international digits without the leading +, per [WhatsApp's click-to-chat guidance](https://faq.whatsapp.com/5913398998672934). Messenger accepts only HTTPS links on `m.me` with a single Page username or ID; no redirect parameters or other domains.
 
-- phone: business call/SMS number in international +countrycode format.
-- whatsapp: verified WhatsApp number in international +countrycode format.
-- email: verified business inbox, displayed in the footer.
-- requestEndpoint: an HTTPS endpoint that accepts multipart FormData.
+## Customer expectations
 
-Setting email alone does not deliver forms. GitHub Pages is a static host; a backend or form provider must forward requests to the inbox. No SMTP credentials, passwords or private API keys belong in this file.
+Ask customers to share their vehicle's year, make, model, city, concern and preferred day in the chat. Reply personally and agree on scope, pricing and an available time. A message is not a confirmed appointment, and the website must not claim that a message was delivered just because a link was opened.
 
-## Endpoint contract
-
-Accept the named form fields: year, make, model, vehicleType, service, issue, name, phone, email, city, location, date, time, contactMethod, language, siteLanguage, photo, website, consent, and timeZone (America/Los_Angeles).
-
-language is the customer's preferred follow-up language (en or es); siteLanguage identifies the page language (en or es). Validate both against that allowlist. Show the preferred language prominently in the business notification. Spanish labels preserve the same canonical service, vehicle, location and time values as the English form; customer-entered descriptions may be in either language.
-
-Validate all fields and consent on the server. Apply request body limits, image validation/scanning, rate limiting and deduplication before email delivery. Allow only the production website origin for browser CORS. Never trust a browser-supplied recipient address; the business inbox is server configuration.
-
-Return a successful HTTP response with JSON {"received":true} only after durable acceptance for delivery. Other responses, rate limits and timeouts leave the customer's form intact and show an error. The browser never automatically retries.
-
-Email subject: New brake-service request — city / vehicle.
-Email content: customer contact details, follow-up channel and language preference, vehicle, service, issue, location type, preferred Pacific date/time and safe attachment link. Set reply-to only after validation; do not interpolate user data into mail headers.
-
-An appointment is confirmed by the owner after a personal conversation. If calendar integration is added, create only a tentative internal request event until the customer accepts the time; do not send a confirmed calendar invitation on submission.
-
-## Activation checks
-
-Provide the WhatsApp number and receiving inbox, then connect the chosen secure email adapter. Verify actual inbox receipt, spam controls, mobile requests, validation errors and the owner's text follow-up. Test preview and live states separately. A mocked endpoint test does not establish real email delivery.
+The business handles incoming message volume, blocking and reporting within WhatsApp or Messenger. The site does not collect, upload or retain customer details. Existing Zoho mail configuration is separate and is not used by this contact flow.

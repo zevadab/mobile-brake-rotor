@@ -3,11 +3,17 @@ import { cp, lstat, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { dirname, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { renderSpanish } from './render-spanish.mjs';
+import { runInNewContext } from 'node:vm';
+import { renderContactLinks } from './render-contact-links.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const destination = resolve(root, 'dist');
 let html = await readFile(resolve(root, 'src/index.html'), 'utf8');
 const spanish = JSON.parse(await readFile(resolve(root, 'src/i18n/es.json'), 'utf8'));
+// Evaluate only our trusted, repository-owned public configuration, never visitor input.
+const settings = { window: {} };
+runInNewContext(await readFile(resolve(root, 'src/scripts/site-config.js'), 'utf8'), settings, { timeout: 1000 });
+html = renderContactLinks(html, settings.window.SITE_CONFIG);
 let esHtml = renderSpanish(html, spanish);
 
 // Only clear this project's generated dist directory; refuse links or other paths.
