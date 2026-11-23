@@ -1,26 +1,40 @@
 import { createHash } from 'node:crypto';
-import { cp, mkdir, readFile, writeFile } from 'node:fs/promises';
-import { dirname, resolve } from 'node:path';
+import { cp, lstat, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
+import { dirname, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { renderSpanish } from './render-spanish.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const destination = resolve(root, 'dist');
-await mkdir(destination, { recursive: true });
-let html = await readFile(resolve(root, 'index.html'), 'utf8');
-const spanish = JSON.parse(await readFile(resolve(root, 'i18n/es.json'), 'utf8'));
+let html = await readFile(resolve(root, 'src/index.html'), 'utf8');
+const spanish = JSON.parse(await readFile(resolve(root, 'src/i18n/es.json'), 'utf8'));
 let esHtml = renderSpanish(html, spanish);
+
+// Only clear this project's generated dist directory; refuse links or other paths.
+if (relative(root, destination) !== 'dist') throw new Error('Unexpected build directory.');
+const existing = await lstat(destination).catch(error => {
+ if (error.code !== 'ENOENT') throw error;
+});
+if (existing && (!existing.isDirectory() || existing.isSymbolicLink())) {
+ throw new Error('Build directory must be a real directory inside the project.');
+}
+await rm(destination, { recursive: true, force: true });
+await mkdir(destination, { recursive: true });
 
 // Changed content gets a new URL, even when a phone or CDN retains older CSS.
 // Keep stable copies for compatibility with tabs opened before this deployment.
-for (const name of ['styles.css', 'script.js', 'site-config.js']) {
- const content = await readFile(resolve(root, name));
+for (const [reference, name] of [
+ ['styles/styles.css', 'styles.css'],
+ ['scripts/script.js', 'script.js'],
+ ['scripts/site-config.js', 'site-config.js']
+]) {
+ const content = await readFile(resolve(root, 'src', reference));
  const hash = createHash('sha256').update(content).digest('hex').slice(0, 16);
  const dot = name.lastIndexOf('.');
  const versioned = name.slice(0, dot) + '.' + hash + name.slice(dot);
- if (!html.includes('"' + name + '"')) throw new Error('Missing HTML reference: ' + name);
- html = html.replaceAll('"' + name + '"', '"' + versioned + '"');
- esHtml = esHtml.replaceAll('"' + name + '"', '"' + versioned + '"');
+ if (!html.includes('"' + reference + '"')) throw new Error('Missing HTML reference: ' + reference);
+ html = html.replaceAll('"' + reference + '"', '"' + versioned + '"');
+ esHtml = esHtml.replaceAll('"' + reference + '"', '"' + versioned + '"');
  await writeFile(resolve(destination, versioned), content);
  await writeFile(resolve(destination, name), content);
 }
@@ -35,8 +49,8 @@ await writeFile(resolve(destination, 'es.html'), esHtml);
 
 // Explicit public-file allowlist: repository notes, tests and credentials stay out.
 for (const name of ['CNAME', 'robots.txt', 'sitemap.xml']) {
- await cp(resolve(root, name), resolve(destination, name));
+ await cp(resolve(root, 'public', name), resolve(destination, name));
 }
-await cp(resolve(root, 'assets'), resolve(destination, 'assets'), { recursive: true });
+await cp(resolve(root, 'public/assets'), resolve(destination, 'assets'), { recursive: true });
 await writeFile(resolve(destination, 'index.html'), html);
 console.log('Built English and Spanish pages with content-versioned CSS and JavaScript.');

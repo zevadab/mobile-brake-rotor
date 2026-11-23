@@ -8,7 +8,7 @@ Requests remain in preview mode because the business number, Zoho inbox and emai
 
 ## Public configuration
 
-Edit site-config.js once details are verified:
+Edit src/scripts/site-config.js once details are verified, then rebuild the site:
 
 - phone: business call/SMS number in international +countrycode format.
 - whatsapp: verified WhatsApp number in international +countrycode format.

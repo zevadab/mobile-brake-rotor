@@ -22,9 +22,9 @@ Forms and business-contact configuration remain governed by REQUEST_SETUP.md.
 
 ## Archived wheel asset provenance
 
-The former wheel sequence and its runtime were removed at the owner's request. The generated source asset remains in assets/motion for provenance; neither page uses it.
+The former wheel sequence and its runtime were removed at the owner's request. Its source and derivatives remain in design/archive/tire-hero/ for provenance; neither page uses them and the build does not publish them.
 
-Generated with the built-in image-generation tool, new image mode, transparent background. Original: assets/motion/wheel-front.png. Responsive derivatives: wheel-front-640.webp, wheel-front-960.webp, wheel-front-1280.webp. Sharp only resized and encoded those derivatives.
+Generated with the built-in image-generation tool, new image mode, transparent background. Original: design/archive/tire-hero/wheel-front.png. Responsive derivatives: wheel-front-640.webp, wheel-front-960.webp, wheel-front-1280.webp. Sharp only resized and encoded those derivatives.
 
 Original generation prompt:
 
