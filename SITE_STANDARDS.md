@@ -62,7 +62,7 @@ Images should not show:
 
 The homepage should tell a short visual story:
 
-1. **Need help?** — A large centered tire and wheel leads a pinned photographic sequence: wheel, brake close-up, then the owner-operator at the customer's truck.
+1. **Need help?** — The owner-operator working at a customer's truck leads the hero. Use the supplied driveway photograph, concise personal copy, and a small service-detail inset.
 2. **What do we do?** — Clear brake and rotor services with a close-up brake image.
 3. **How does it work?** — Request, confirm, and receive service at your location.
 4. **Why choose us?** — Personal service, clear communication, and local coverage.
@@ -79,9 +79,9 @@ Use smooth, restrained transitions:
 - Numbered process steps that reveal sequentially
 - Sticky mobile Call, Text, and Request Quote actions
 
-The hero is the deliberate motion centerpiece, per the owner's latest direction. Use native sticky positioning and reversible scroll progress: oversized wheel zoom, circular brake-photo reveal, and a driveway-photo wipe. Keep copy short, quote actions accessible, and a visible services/pricing link that bypasses the sequence. Do not intercept touch, wheel, or keyboard scrolling. Elsewhere, keep motion restrained.
+The owner's current direction is personal and photographic. The mechanic leads the opening, with subtle image settling and a small brake-detail inset for variation. The tire-centered hero and pinned scroll sequence are retired. Use natural document scrolling, short copy, and visible quote/pricing actions. Do not intercept touch, wheel, or keyboard scrolling.
 
-Respect `prefers-reduced-motion`: show a single static wheel hero with no extended scroll runway. Keep the same usable fallback without JavaScript. Short and landscape viewports must keep hero actions inside the visible stage. See MOTION_DESIGN.md for asset provenance and verification.
+Respect `prefers-reduced-motion`: disable the image settle and section reveals. The complete opening must remain usable without JavaScript. On phones, lead with the owner photograph, followed by readable copy and actions in normal flow; never constrain the content to a fixed viewport height. See MOTION_DESIGN.md for the current treatment and asset provenance.
 
 ## English and Spanish
 
@@ -90,7 +90,7 @@ Respect `prefers-reduced-motion`: show a single static wheel hero with no extend
 - Translate complete customer journeys: content, alt text, menus, forms, consent, pricing qualifications, safety language, dialogs and request states. The build rejects untranslated new page text.
 - Keep form field names and service values stable across languages. Collect preferred follow-up language independently from page language.
 - Both pages require correct language metadata, canonical URLs and reciprocal hreflang links. Keep both in the sitemap.
-- Test Spanish copy on narrow phones, including the pinned hero, navigation, form validation and delivery errors. Browser-owned file/date picker controls follow the device language.
+- Test Spanish copy on narrow phones, including the owner hero, navigation, form validation and delivery errors. Browser-owned file/date picker controls follow the device language.
 - For local bilingual review, run node scripts/build-site.mjs, then serve dist (for example: python -m http.server 4174 --directory dist). The source index.html alone does not include the generated Spanish route.
 
 ## Copy standard
@@ -169,7 +169,7 @@ Before printing vehicle graphics or using the logo at large physical sizes, recr
 
 ## How these standards apply
 
-This v2 direction supersedes the previous illustrated truck/wheel sequence. The owner's subsequent request adds a photorealistic pinned wheel-to-brake-to-driveway hero; the prior static mechanic hero is now the final scene. The operational requirements below remain in effect. Keep the original brand logos unchanged.
+The owner has returned to the personal mechanic hero with photographic variation. Both the illustrated truck sequence and later tire-centered pinned sequence are retired. The operational requirements below remain in effect. Keep the original brand logos unchanged.
 
 ## Mobile-first and local discovery standard
 
@@ -179,7 +179,7 @@ Assume most first visits come from a phone after a local Google search such as �
 - Keep important copy, service area, and request controls near the top of the mobile experience.
 - Use comfortable tap targets, readable text, short form steps, and minimal typing wherever possible.
 - Test the page at narrow phone widths before considering a feature complete.
-- Include 320px phones, short screens, landscape and orientation changes. Keep hero actions at least 44px high, form text at least 16px, and content clear of device safe areas. Hide the mobile action bar while quote fields have focus. Verify pinned scenes in Chromium and WebKit mobile emulation; real-device testing remains a useful release check.
+- Include 320px phones, short screens, landscape and orientation changes. Keep hero actions at least 44px high, form text at least 16px, and content clear of device safe areas. Hide the mobile action bar while quote fields have focus. Verify the photo crop, readable copy and normal scrolling in Chromium and WebKit mobile emulation; real-device testing remains a useful release check.
 - Keep page title, description, headings, service names, cities served, and structured data aligned with real services and confirmed coverage.
 - Make the business name, service type, Inland Empire coverage, and contact action easy for both people and search engines to understand.
 - Avoid keyword stuffing, city-list spam, hidden text, or claims that are not operationally true.

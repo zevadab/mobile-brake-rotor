@@ -13,7 +13,7 @@ let esHtml = renderSpanish(html, spanish);
 
 // Changed content gets a new URL, even when a phone or CDN retains older CSS.
 // Keep stable copies for compatibility with tabs opened before this deployment.
-for (const name of ['styles.css', 'script.js', 'hero-motion.js', 'site-config.js']) {
+for (const name of ['styles.css', 'script.js', 'site-config.js']) {
  const content = await readFile(resolve(root, name));
  const hash = createHash('sha256').update(content).digest('hex').slice(0, 16);
  const dot = name.lastIndexOf('.');

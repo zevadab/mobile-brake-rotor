@@ -6,7 +6,7 @@ import { test } from 'node:test';
 test('deployed HTML pairs every stylesheet and script with its exact content', async () => {
  const html = await readFile('dist/index.html', 'utf8');
  const source = await readFile('index.html', 'utf8');
- for (const name of ['styles.css', 'script.js', 'hero-motion.js', 'site-config.js']) {
+ for (const name of ['styles.css', 'script.js', 'site-config.js']) {
   const original = await readFile(name);
   const hash = createHash('sha256').update(original).digest('hex').slice(0, 16);
   const dot = name.lastIndexOf('.');

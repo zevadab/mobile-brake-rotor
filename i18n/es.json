@@ -211,5 +211,13 @@
   "Request received. I’ll review your details and message you about your quote and available times. Your appointment is not yet confirmed.": "Solicitud recibida. Revisaré tus datos y te enviaré un mensaje sobre la cotización y los horarios disponibles. Tu cita aún no está confirmada.",
   "Preview complete. Your details are valid, but nothing was emailed or booked. Once online requests are connected, I’ll review each request and follow up by text.": "Revisión completa. Tus datos son válidos, pero no se envió ningún correo ni se reservó una cita. Cuando se activen las solicitudes en línea, revisaré cada solicitud y responderé por mensaje.",
   "Confirmation timed out. Delivery is uncertain; please avoid immediately sending a duplicate.": "Se agotó el tiempo de confirmación. No sabemos si se recibió; evita enviar otra solicitud de inmediato.",
-  "Unable to connect. Your details are still here. Please check your connection.": "No se pudo conectar. Tus datos siguen aquí. Revisa tu conexión."
+  "Unable to connect. Your details are still here. Please check your connection.": "No se pudo conectar. Tus datos siguen aquí. Revisa tu conexión.",
+  "OWNER-OPERATED / INLAND EMPIRE": "ATENCIÓN DEL DUEÑO / INLAND EMPIRE",
+  "Brake & rotor service.": "Servicio de frenos y discos.",
+  "At your home or workplace.": "En tu casa o trabajo.",
+  "One person. From quote to driveway.": "Una persona. De la cotización a tu casa.",
+  "MOBILE SERVICE. PERSONAL ATTENTION.": "A DOMICILIO. ATENCIÓN PERSONAL.",
+  "A CLOSER LOOK": "DE CERCA",
+  "Care in the details.": "Cuidado en cada detalle.",
+  "See how I work": "Conoce mi servicio"
 }
