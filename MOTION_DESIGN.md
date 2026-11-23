@@ -28,4 +28,8 @@ Later scenes use the supplied brake-service-detail-owner-operator.png and hero-o
 
 Use local Playwright browser checks at desktop, narrow phone, and landscape sizes. Verify all three scenes, reverse scrolling, a stable pinned stage, visible quote controls, no horizontal overflow, usable services skip link, dynamic reduced-motion preference changes, and a usable no-JavaScript opening. Confirm images and hero-motion.js load from the deployed site.
 
-GitHub Pages explicitly includes hero-motion.js in its static artifact. Forms and business-contact configuration remain governed by REQUEST_SETUP.md.
+GitHub Pages runs scripts/build-site.mjs to package public assets. The emitted index.html references content-hashed CSS and JavaScript filenames, including hero-motion, so a cached stylesheet from a previous design cannot style newly fetched markup. Stable copies remain available for previously opened tabs. Local source files keep their readable names. Run node scripts/build-site.mjs and node --test tests/build-site.test.mjs before publishing.
+
+A browser regression at the iPhone 16 Pro's 402 × 874 CSS-pixel viewport reproduced the old-stylesheet failure: the new wheel image retained its 1280px HTML height and the stage grew to 3689px. The new artifact must restore the expected approximately 418px wheel and 735px stage while the legacy CSS remains cached. This demonstrates the failure mode; it does not replace verification on the customer's physical phone.
+
+Forms and business-contact configuration remain governed by REQUEST_SETUP.md.

@@ -30,9 +30,8 @@ jobs:
 
       - name: Stage public website files
         run: |
-          mkdir -p dist
-          cp index.html styles.css script.js hero-motion.js site-config.js CNAME robots.txt sitemap.xml dist/
-          cp -R assets dist/assets
+          node scripts/build-site.mjs
+          node --test tests/build-site.test.mjs
 
       - name: Upload static site
         uses: actions/upload-pages-artifact@v3
