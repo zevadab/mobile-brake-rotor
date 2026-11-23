@@ -1,9 +1,10 @@
+const t = text => (window.SITE_MESSAGES || {})[text] || text;
 const menu = document.querySelector('.menu-toggle');
 const nav = document.querySelector('#main-nav');
 menu.addEventListener('click', () => {
  const open = nav.classList.toggle('open');
  menu.setAttribute('aria-expanded', String(open));
- menu.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+ menu.setAttribute('aria-label', open ? t('Close menu') : t('Open menu'));
 });
 nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
  nav.classList.remove('open'); menu.setAttribute('aria-expanded', 'false');
@@ -68,6 +69,23 @@ document.querySelector('#dialog-quote').addEventListener('click', () => {
 });
 const form = document.querySelector('#quote-form');
 const status = document.querySelector('.form-status');
+// Keep browser validation understandable even if the device UI is in English.
+form.addEventListener('input', event => event.target.setCustomValidity?.(''));
+form.addEventListener('change', event => event.target.setCustomValidity?.(''));
+function localizeValidity() {
+ for (const field of form.elements) {
+  if (!field.setCustomValidity) continue;
+  field.setCustomValidity('');
+  if (document.documentElement.lang !== 'es' || field.validity.valid) continue;
+  const invalid = field.validity;
+  field.setCustomValidity(
+   invalid.valueMissing ? (field.type === 'checkbox' ? 'Acepta las condiciones para continuar.' : 'Completa este campo.') :
+   invalid.typeMismatch ? 'Ingresa un correo electrónico válido.' :
+   invalid.rangeUnderflow ? 'Elige una fecha de hoy en adelante.' :
+   'Revisa el formato de este campo.'
+  );
+ }
+}
 document.querySelectorAll('[data-service]').forEach(link => link.addEventListener('click', () => {
  form.elements.service.value = link.dataset.service;
 }));
@@ -76,15 +94,15 @@ form.elements.date.min = pacificToday();
 const liveEndpoint = typeof config.requestEndpoint === 'string' && /^https:\/\//.test(config.requestEndpoint) ? config.requestEndpoint : null;
 const submitButton = form.querySelector('[type=submit]');
 if (liveEndpoint) {
- submitButton.textContent = 'Request my quote';
- document.querySelector('.preview-notice').textContent = 'Choose a preferred day. I’ll review your request and follow up by message. An appointment is confirmed only after we agree on a time.';
- document.querySelector('#booking-dialog .field-note').textContent = 'A preferred date is a request, not a confirmed appointment.';
+ submitButton.textContent = t('Request my quote');
+ document.querySelector('.preview-notice').textContent = t('Choose a preferred day. I’ll review your request and follow up by message. An appointment is confirmed only after we agree on a time.');
+ document.querySelector('#booking-dialog .field-note').textContent = t('A preferred date is a request, not a confirmed appointment.');
 }
 
 form.elements.vehicleType.addEventListener('change', () => {
  document.querySelector('#fit-note').textContent = form.elements.vehicleType.value === 'Other'
- ? 'You can submit for review. Service for this vehicle is not guaranteed.'
- : 'Domestic vehicles are our focus. All vehicles are reviewed for service fit.';
+ ? t('You can submit for review. Service for this vehicle is not guaranteed.')
+ : t('Domestic vehicles are our focus. All vehicles are reviewed for service fit.');
 });
 let busy = false;
 let lastSubmit = 0;
@@ -95,48 +113,52 @@ form.addEventListener('submit', async event => {
  if (busy) return;
  status.className = 'form-status'; status.textContent = '';
  if (form.elements.website.value) return;
- if (Date.now() - lastSubmit < 60000) return error('Please wait one minute before submitting another request.');
+ if (Date.now() - lastSubmit < 60000) return error(t('Please wait one minute before submitting another request.'));
  for (const input of form.querySelectorAll('input[type=text],input:not([type]),textarea')) {
   if (input.name !== 'website') input.value = input.value.trim();
  }
  const photo = form.elements.photo.files[0];
  if (photo && (!['image/jpeg','image/png','image/webp'].includes(photo.type) || photo.size > 5*1024*1024)) {
-  return error('Choose one JPG, PNG or WebP photo no larger than 5 MB.');
+  return error(t('Choose one JPG, PNG or WebP photo no larger than 5 MB.'));
  }
  form.elements.date.min = pacificToday();
- if (!form.checkValidity()) { error('Check the required fields and acknowledgement.'); form.reportValidity(); return; }
+ localizeValidity();
+ if (!form.checkValidity()) { error(t('Check the required fields and acknowledgement.')); form.reportValidity(); return; }
  const year = Number(form.elements.year.value);
- if (year < 1900 || year > new Date().getFullYear()+1) return error('Enter a valid vehicle year.');
+ if (year < 1900 || year > new Date().getFullYear()+1) return error(t('Enter a valid vehicle year.'));
  const digits = form.elements.phone.value.replace(/\D/g,'');
- if (digits.length < 10 || digits.length > 15) return error('Enter a phone number with 10 to 15 digits.');
+ if (digits.length < 10 || digits.length > 15) return error(t('Enter a phone number with 10 to 15 digits.'));
  busy = true;
  submitButton.disabled = true;
- submitButton.textContent = liveEndpoint ? 'Sending request…' : 'Checking details…';
+ submitButton.textContent = liveEndpoint ? t('Sending request…') : t('Checking details…');
  try {
   if (liveEndpoint) {
    const payload = new FormData(form);
    payload.set('timeZone', 'America/Los_Angeles');
+   payload.set('siteLanguage', document.documentElement.lang);
    const controller = new AbortController();
    const timeout = setTimeout(() => controller.abort(), 15000);
    let response;
    try {
     response = await fetch(liveEndpoint, {method:'POST', body:payload, signal:controller.signal, credentials:'omit'});
    } finally { clearTimeout(timeout); }
-   if (!response.ok) throw new Error(response.status === 429 ? 'Too many requests. Please wait a few minutes and try again.' : 'Your request could not be confirmed. Your details are still here; please try again.');
+   if (!response.ok) throw new Error(response.status === 429 ? t('Too many requests. Please wait a few minutes and try again.') : t('Your request could not be confirmed. Your details are still here; please try again.'));
    const receipt = await response.json();
-   if (receipt.received !== true) throw new Error('Delivery could not be confirmed. Please try again.');
-   status.textContent = 'Request received. I’ll review your details and message you about your quote and available times. Your appointment is not yet confirmed.';
+   if (receipt.received !== true) throw new Error(t('Delivery could not be confirmed. Please try again.'));
+   status.textContent = t('Request received. I’ll review your details and message you about your quote and available times. Your appointment is not yet confirmed.');
    form.reset();
   } else {
-   status.textContent = 'Preview complete. Your details are valid, but nothing was emailed or booked. Once online requests are connected, I’ll review each request and follow up by text.';
+   status.textContent = t('Preview complete. Your details are valid, but nothing was emailed or booked. Once online requests are connected, I’ll review each request and follow up by text.');
   }
   lastSubmit = Date.now();
   try { sessionStorage.setItem('quote-preview-time', String(lastSubmit)); } catch {}
  } catch (failure) {
-  error(failure.name === 'AbortError' ? 'Confirmation timed out. Delivery is uncertain; please avoid immediately sending a duplicate.' : failure.message === 'Failed to fetch' ? 'Unable to connect. Your details are still here. Please check your connection.' : failure.message);
+  error(failure.name === 'AbortError' ? t('Confirmation timed out. Delivery is uncertain; please avoid immediately sending a duplicate.') :
+   failure.name === 'TypeError' ? t('Unable to connect. Your details are still here. Please check your connection.') :
+   failure.name === 'SyntaxError' ? t('Delivery could not be confirmed. Please try again.') : failure.message);
  } finally {
   submitButton.disabled = false;
-  submitButton.textContent = liveEndpoint ? 'Request my quote' : 'Preview my request';
+  submitButton.textContent = liveEndpoint ? t('Request my quote') : t('Preview my request');
   busy = false;
  }
 });

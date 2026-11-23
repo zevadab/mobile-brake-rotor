@@ -34,6 +34,11 @@ p{font-size:1rem}
 nav{margin-left:auto;display:flex;gap:28px}
 nav a{font-size:.9rem;text-decoration:none;font-weight:500}
 .menu-toggle{display:none}
+.language-switch{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:8px 12px;border:1px solid var(--line);border-radius:8px;font-size:.875rem;text-decoration:none;white-space:nowrap}
+.language-switch:hover{border-color:var(--orange);color:#ff984f}
+.language-preference{margin-bottom:20px}
+@media(max-width:1100px){.header-inner>.button{display:none}}
+@media(max-width:700px){.language-switch{margin-left:auto}.header-inner{gap:10px}}
 .fit-strip{padding:28px 0;border-bottom:1px solid var(--line)}
 .fit-strip .container{display:flex;justify-content:space-between;gap:20px;font-size:.85rem}
 .fit-strip span{color:var(--muted)}

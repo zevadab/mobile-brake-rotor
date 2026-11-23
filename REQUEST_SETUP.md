@@ -19,14 +19,16 @@ Setting email alone does not deliver forms. GitHub Pages is a static host; a bac
 
 ## Endpoint contract
 
-Accept the named form fields: year, make, model, vehicleType, service, issue, name, phone, email, city, location, date, time, contactMethod, photo, website, consent, and timeZone (America/Los_Angeles).
+Accept the named form fields: year, make, model, vehicleType, service, issue, name, phone, email, city, location, date, time, contactMethod, language, siteLanguage, photo, website, consent, and timeZone (America/Los_Angeles).
+
+language is the customer's preferred follow-up language (en or es); siteLanguage identifies the page language (en or es). Validate both against that allowlist. Show the preferred language prominently in the business notification. Spanish labels preserve the same canonical service, vehicle, location and time values as the English form; customer-entered descriptions may be in either language.
 
 Validate all fields and consent on the server. Apply request body limits, image validation/scanning, rate limiting and deduplication before email delivery. Allow only the production website origin for browser CORS. Never trust a browser-supplied recipient address; the business inbox is server configuration.
 
 Return a successful HTTP response with JSON {"received":true} only after durable acceptance for delivery. Other responses, rate limits and timeouts leave the customer's form intact and show an error. The browser never automatically retries.
 
 Email subject: New brake-service request — city / vehicle.
-Email content: customer contact details, follow-up preference, vehicle, service, issue, location type, preferred Pacific date/time and safe attachment link. Set reply-to only after validation; do not interpolate user data into mail headers.
+Email content: customer contact details, follow-up channel and language preference, vehicle, service, issue, location type, preferred Pacific date/time and safe attachment link. Set reply-to only after validation; do not interpolate user data into mail headers.
 
 An appointment is confirmed by the owner after a personal conversation. If calendar integration is added, create only a tentative internal request event until the customer accepts the time; do not send a confirmed calendar invitation on submission.
 

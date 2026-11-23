@@ -83,6 +83,16 @@ The hero is the deliberate motion centerpiece, per the owner's latest direction.
 
 Respect `prefers-reduced-motion`: show a single static wheel hero with no extended scroll runway. Keep the same usable fallback without JavaScript. Short and landscape viewports must keep hero actions inside the visible stage. See MOTION_DESIGN.md for asset provenance and verification.
 
+## English and Spanish
+
+- Display a visible English/Spanish switch and “Se habla español” availability message.
+- English source is index.html. Spanish copy is maintained in i18n/es.json; scripts/render-spanish.mjs generates es.html during the build. Do not manually edit dist/es.html.
+- Translate complete customer journeys: content, alt text, menus, forms, consent, pricing qualifications, safety language, dialogs and request states. The build rejects untranslated new page text.
+- Keep form field names and service values stable across languages. Collect preferred follow-up language independently from page language.
+- Both pages require correct language metadata, canonical URLs and reciprocal hreflang links. Keep both in the sitemap.
+- Test Spanish copy on narrow phones, including the pinned hero, navigation, form validation and delivery errors. Browser-owned file/date picker controls follow the device language.
+- For local bilingual review, run node scripts/build-site.mjs, then serve dist (for example: python -m http.server 4174 --directory dist). The source index.html alone does not include the generated Spanish route.
+
 ## Copy standard
 
 Copy should be short, direct, and human.
