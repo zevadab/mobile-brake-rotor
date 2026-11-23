@@ -46,9 +46,9 @@ The build replaces only this project's generated `dist/` directory. It generates
 
 - Page content: [src/index.html](src/index.html). Keep the matching Spanish copy in [src/i18n/es.json](src/i18n/es.json); the build rejects missing page translations.
 - Appearance: [src/styles/styles.css](src/styles/styles.css).
-- WhatsApp Business number and Facebook Messenger URL: [src/scripts/site-config.js](src/scripts/site-config.js). These settings are public; never add credentials.
+- WhatsApp Business short link or number and Facebook Messenger URL: [src/scripts/site-config.js](src/scripts/site-config.js). These settings are public; never add credentials.
 - Images: place optimized files in `public/assets/`, and retain source artwork in `design/originals/`. HTML uses published URLs such as `assets/photography/hero-1440.webp`.
-- Messaging setup: follow [docs/REQUEST_SETUP.md](docs/REQUEST_SETUP.md). Both chat channels are currently unconfigured and labeled coming soon. Add verified destinations and rebuild to activate native links; no contact form or backend is used.
+- Messaging setup: follow [docs/REQUEST_SETUP.md](docs/REQUEST_SETUP.md). WhatsApp is connected to the owner's business short link. Messenger remains unconfigured and labeled coming soon. Add its verified destination and rebuild to activate it; no contact form or backend is used.
 
 Read [site standards](docs/SITE_STANDARDS.md), [brand guidelines](docs/BRAND_GUIDELINES.md), [design notes](docs/DESIGN_NOTES.md), [hero treatment](docs/MOTION_DESIGN.md), and [photography notes](docs/PHOTOGRAPHY.md) before changing those areas.
 

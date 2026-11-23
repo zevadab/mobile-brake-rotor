@@ -5,7 +5,7 @@ The website uses WhatsApp and Facebook Messenger for customer contact. It has no
 ## Activate the buttons
 
 1. Finish setting up the business account for each channel you want to use.
-2. Confirm the WhatsApp Business number, including its country code. Use a leading + and digits only, without spaces or punctuation.
+2. Supply the WhatsApp Business short link in the form `https://wa.me/message/BusinessCode`, or an international number with a leading + and digits only. The owner supplied `https://wa.me/message/TLXNPSOKQA2ZN1`, which is now configured.
 3. Get the business Page's Messenger URL, in the form https://m.me/PageUsernameOrId. Check that it opens the business conversation, not a personal profile.
 4. Update the public fields in `src/scripts/site-config.js`: `whatsapp` and `messengerUrl`. Leave an unready channel blank. Never add a password, API key or access token.
 5. Run `node scripts/build-site.mjs` and `node --test tests/build-site.test.mjs`. Preview `dist/` locally.
@@ -15,7 +15,7 @@ The website uses WhatsApp and Facebook Messenger for customer contact. It has no
 
 The build validates destinations and renders native links in the hero, contact section and mobile action bar. They work without JavaScript and open in a new tab with `noopener noreferrer`. No chat SDK is loaded.
 
-WhatsApp links use `https://wa.me/` followed by international digits without the leading +, per [WhatsApp's click-to-chat guidance](https://faq.whatsapp.com/5913398998672934). Messenger accepts only HTTPS links on `m.me` with a single Page username or ID; no redirect parameters or other domains.
+WhatsApp Business short links are preserved exactly. International numbers are converted to `https://wa.me/` followed by digits without the leading +, per [WhatsApp's click-to-chat guidance](https://faq.whatsapp.com/5913398998672934). The build accepts only HTTPS short links on `wa.me` with `/message/` and an alphanumeric business code, without query parameters or fragments. Messenger accepts only HTTPS links on `m.me` with a single Page username or ID; no redirect parameters or other domains.
 
 ## Customer expectations
 

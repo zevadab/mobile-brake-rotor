@@ -91,6 +91,7 @@ test('unconfigured channels are disabled, individually configured channels becom
  assert.equal([...empty.matchAll(/data-message-channel="(?:whatsapp|messenger)" type="button" disabled/g)].length, 6);
  for (const config of [
   {whatsapp: '+12025550123'},
+  {whatsapp: 'https://wa.me/message/TLXNPSOKQA2ZN1'},
   {messengerUrl: 'https://m.me/ExampleBusiness'},
   {whatsapp: '+12025550123', messengerUrl: 'https://m.me/123456789'}
  ]) {
@@ -115,6 +116,15 @@ test('configuration refuses malformed numbers and non-business-chat destinations
   whatsapp:'https://wa.me/12025550123', messenger:'https://m.me/My.Business/'
  });
  for (const whatsapp of ['5551234', '+1 202 555 0123', '+02025550123', '+1202555012345678']) {
+  assert.throws(() => contactDestinations({whatsapp}));
+ }
+ assert.equal(contactDestinations({whatsapp:'https://wa.me/message/TLXNPSOKQA2ZN1'}).whatsapp,
+  'https://wa.me/message/TLXNPSOKQA2ZN1');
+ for (const whatsapp of ['http://wa.me/message/CODE', 'https://wa.me.evil.com/message/CODE',
+  'https://wa.me@evil.com/message/CODE', 'https://user:pass@wa.me/message/CODE',
+  'https://wa.me/message/', 'https://wa.me/message/CODE/extra', 'https://wa.me/message/../evil',
+  'https://wa.me/message/CODE?redirect=https://evil.com', 'https://wa.me/message/CODE#extra',
+  'javascript:alert(1)']) {
   assert.throws(() => contactDestinations({whatsapp}));
  }
  for (const messengerUrl of ['javascript:alert(1)', 'http://m.me/example', 'https://m.me.evil.com/page',

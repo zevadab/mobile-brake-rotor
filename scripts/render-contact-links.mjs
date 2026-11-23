@@ -5,8 +5,10 @@ const escapeAttribute = value => value.replaceAll('&', '&amp;').replaceAll('"', 
 export function contactDestinations(config) {
  const whatsapp = config.whatsapp?.trim() || '';
  const messenger = config.messengerUrl?.trim() || '';
- if (whatsapp && !/^\+[1-9]\d{7,14}$/.test(whatsapp)) {
-  throw new Error('WhatsApp must use +country code and digits only.');
+ const whatsappNumber = /^\+[1-9]\d{7,14}$/.test(whatsapp);
+ const whatsappShortLink = /^https:\/\/wa\.me\/message\/[A-Za-z0-9]+\/?$/.test(whatsapp);
+ if (whatsapp && !whatsappNumber && !whatsappShortLink) {
+  throw new Error('WhatsApp must use +country code and digits, or https://wa.me/message/BusinessCode.');
  }
  if (messenger) {
   const url = new URL(messenger);
@@ -16,7 +18,7 @@ export function contactDestinations(config) {
    throw new Error('Messenger must be a business chat URL: https://m.me/PageUsernameOrId');
   }
  }
- return { whatsapp: whatsapp ? 'https://wa.me/' + whatsapp.slice(1) : '', messenger };
+ return { whatsapp: whatsappNumber ? 'https://wa.me/' + whatsapp.slice(1) : whatsapp, messenger };
 }
 
 export function renderContactLinks(html, config) {

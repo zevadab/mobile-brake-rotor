@@ -208,7 +208,7 @@ The site must distinguish a **request** from a **confirmed appointment**. A mess
 - Public destinations belong in src/scripts/site-config.js. Never invent a phone number or business Page.
 - Blank destinations remain native disabled buttons labeled “Coming soon” / “Próximamente.” Do not use dummy links or simulate successful delivery.
 - A configured destination becomes a native link during the build, works without JavaScript, and clearly indicates opening a new tab.
-- WhatsApp uses a verified international business number; Messenger uses a verified https://m.me/PageUsernameOrId URL.
+- WhatsApp uses an owner-provided https://wa.me/message/BusinessCode short link or international business number; Messenger uses a verified https://m.me/PageUsernameOrId URL.
 - Neither opening a chat nor sending a message guarantees an appointment or response time.
 
 ## Service and safety language
@@ -260,7 +260,7 @@ Use this or a reviewed equivalent near the messaging buttons:
 
 ## Feature roadmap
 
-1. Configure the verified WhatsApp Business number and Facebook Page Messenger URL.
+1. Keep the owner's WhatsApp Business short link connected and configure the Facebook Page Messenger URL when supplied.
 2. Test both links on a real phone and confirm that each opens the intended business conversation.
 3. Confirm business hours and service coverage before publishing them.
 4. Add verified reviews and consented service photos when available.
@@ -294,7 +294,7 @@ Direct links do not prevent platform spam. The owner manages incoming messages, 
 
 Before launch or paid promotion, replace and verify:
 
-- WhatsApp Business number and Facebook Messenger URL
+- WhatsApp Business short link or number and Facebook Messenger URL
 - Business hours
 - Website URL and logo URL in structured data
 - Actual service radius and city availability
@@ -324,6 +324,6 @@ Do not publish domestic-only restrictions or exclude vehicles by country of manu
 
 Customers start a conversation through a configured WhatsApp or Messenger link. The owner reviews their vehicle, city, concern and preferred day, then confirms details personally in that conversation. No automatic booking, email intake, newsletter subscription or SMS follow-up is implied.
 
-Until both business accounts are configured and verified, keep their respective buttons labeled as coming soon. See REQUEST_SETUP.md. Public configuration contains no account credentials.
+Activate each channel independently when its business destination is supplied. WhatsApp is connected to the owner's business short link; Messenger remains labeled as coming soon until its destination is provided. See REQUEST_SETUP.md. Public configuration contains no account credentials.
 
 Use “Free estimates” and “Fair pricing” instead of numerical ballparks or competitor comparisons. Tailor estimates to the customer’s vehicle, parts and service needs. Free estimates do not imply free inspections or repairs; discuss any inspection, service, tax or travel charges before work begins. Apply this messaging consistently in English and Spanish, including metadata. See DESIGN_NOTES.md.

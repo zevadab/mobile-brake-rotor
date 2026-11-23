@@ -8,7 +8,7 @@ The owner supplied site-standards-v2.md and the preferred photorealistic mechani
 
 The current hero restores the original mechanic/driveway photograph with a personal owner-operated message. Desktop pairs large typography and a directional dark overlay with a small brake-detail inset. Phones show the mechanic first, then copy and WhatsApp/Messenger actions on black. A gentle image settle provides restrained motion; there is no pinned sequence or tire graphic. Responsive WebP delivery, reduced motion and a complete no-JavaScript opening remain required. See MOTION_DESIGN.md. No named identity or completed customer job is attributed to the supplied images.
 
-The contact journey now goes directly to WhatsApp or Facebook Messenger. Both hero buttons remain visibly coming soon until their verified destinations are configured. The contact form, date picker and booking dialogs have been removed. See REQUEST_SETUP.md.
+The contact journey now goes directly to WhatsApp or Facebook Messenger. WhatsApp is connected to the owner's business short link; Messenger remains visibly coming soon until its destination is supplied. The contact form, date picker and booking dialogs have been removed. See REQUEST_SETUP.md.
 
 ## Direction
 
