@@ -333,3 +333,7 @@ Customers start a conversation through a configured WhatsApp or Messenger link. 
 Activate each channel independently when its business destination is supplied. WhatsApp is connected to the owner's business short link; Messenger remains labeled as coming soon until its destination is provided. See REQUEST_SETUP.md. Public configuration contains no account credentials.
 
 Use “Free estimates” and “Fair pricing” instead of numerical ballparks or competitor comparisons. Tailor estimates to the customer’s vehicle, parts and service needs. Free estimates do not imply free inspections or repairs; discuss any inspection, service, tax or travel charges before work begins. Apply this messaging consistently in English and Spanish, including metadata. See DESIGN_NOTES.md.
+
+## Confirmed local positioning
+
+Based in Riverside, serving communities throughout the Inland Empire only. Emphasize direct owner contact and service tailored to each customer, with vehicle compatibility, location and availability confirmed personally. Do not imply a customer-facing storefront or guaranteed availability in every city.
