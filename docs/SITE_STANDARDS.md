@@ -247,7 +247,7 @@ Use this or a reviewed equivalent near the messaging buttons:
 - Clearly label sample reviews, placeholder business data, and development-only content.
 - Never publish fictional testimonials as real customer reviews.
 - Show the owner's reported Google rating as a dated snapshot linked to the supplied listing. Add counts or individual quotes only when supplied or verified; never imply live synchronization.
-- Display confirmed payment methods (Visa, credit cards and Zelle) without adding an online checkout or requesting payment information on the website.
+- Display confirmed payment methods (Visa, credit cards, Zelle and cash) without adding an online checkout or requesting payment information on the website.
 - Lead service copy with convenience: service at the customer's home or workplace, free estimates and direct personal contact. Service and estimate buttons open the configured business chat directly.
 - Do not imply that every listed city is always available; invite customers to confirm coverage.
 - Avoid fear-based copy, racing imagery, excessive technical jargon, and aggressive sales language.

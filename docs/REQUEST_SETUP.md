@@ -23,13 +23,13 @@ Service-card, free-estimate, header and closing actions marked `data-direct-cont
 
 Google links are validated during the build. There is no review widget, API key, review scraping or aggregate-rating structured data. If the Google URL is cleared, its link is omitted.
 
-The owner confirmed Visa, credit cards and Zelle on November 24, 2026. These appear as payment information in the footer, FAQ and business structured data. The website does not collect card details or initiate Zelle payments. Payment arrangements are discussed directly with the customer.
+The owner confirmed Visa, credit cards, Zelle and cash on November 24, 2026. These appear as payment information in the footer, FAQ and business structured data. The website does not collect card details or initiate Zelle payments. Payment arrangements are discussed directly with the customer.
 
 WhatsApp Business short links are preserved exactly. International numbers are converted to `https://wa.me/` followed by digits without the leading +, per [WhatsApp's click-to-chat guidance](https://faq.whatsapp.com/5913398998672934). The build accepts only HTTPS short links on `wa.me` with `/message/` and an alphanumeric business code, without query parameters or fragments. Messenger accepts only HTTPS links on `m.me` with a single Page username or ID; no redirect parameters or other domains.
 
 ## Business hours
 
-The owner confirmed 8 AM–5 PM, subject to availability, on November 24, 2026. Display this in English and Spanish. Operating days have not been specified; do not imply daily service or add a weekly structured-data schedule until days are confirmed.
+The owner confirmed Monday–Saturday, 8 AM–5 PM, subject to availability, on November 24, 2026. Display this in English and Spanish. Keep the availability qualifier visible; messaging is required to confirm a service appointment.
 
 ## Customer expectations
 
