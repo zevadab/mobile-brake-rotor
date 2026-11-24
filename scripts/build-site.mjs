@@ -4,7 +4,7 @@ import { dirname, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { renderSpanish } from './render-spanish.mjs';
 import { runInNewContext } from 'node:vm';
-import { renderContactLinks } from './render-contact-links.mjs';
+import { renderContactLinks, renderGoogleReviewLink } from './render-contact-links.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const destination = resolve(root, 'dist');
@@ -14,6 +14,7 @@ const spanish = JSON.parse(await readFile(resolve(root, 'src/i18n/es.json'), 'ut
 const settings = { window: {} };
 runInNewContext(await readFile(resolve(root, 'src/scripts/site-config.js'), 'utf8'), settings, { timeout: 1000 });
 html = renderContactLinks(html, settings.window.SITE_CONFIG);
+html = renderGoogleReviewLink(html, settings.window.SITE_CONFIG);
 let esHtml = renderSpanish(html, spanish);
 
 // Only clear this project's generated dist directory; refuse links or other paths.

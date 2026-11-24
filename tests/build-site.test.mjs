@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { readFile, readdir } from 'node:fs/promises';
 import { test } from 'node:test';
-import { contactDestinations, renderContactLinks } from '../scripts/render-contact-links.mjs';
+import { contactDestinations, renderContactLinks, renderGoogleReviewLink } from '../scripts/render-contact-links.mjs';
 import { renderSpanish } from '../scripts/render-spanish.mjs';
 import { resolve, relative } from 'node:path';
 
@@ -163,4 +163,43 @@ test('displayed logo and favicon stay within mobile image budgets', async () => 
  const icon = html.match(/<link rel="icon"[^>]*href="([^"]+)"/)[1];
  assert.ok((await readFile('dist/' + logo)).length < 75000, 'Header logo should stay below 75 KB');
  assert.ok((await readFile('dist/' + icon)).length < 10000, 'Favicon should stay below 10 KB');
+});
+
+test('estimate actions open the available chat and fall back to contact when neither is configured', async () => {
+ const template = await readFile('src/index.html', 'utf8');
+ for (const [config, expected] of [
+  [{whatsapp:'https://wa.me/message/TLXNPSOKQA2ZN1'}, 'https://wa.me/message/TLXNPSOKQA2ZN1'],
+  [{messengerUrl:'https://m.me/ExampleBusiness'}, 'https://m.me/ExampleBusiness'],
+  [{}, '#contact']
+ ]) {
+  const html = renderContactLinks(template, config);
+  const actions = [...html.matchAll(/<a\b([^>]*\bdata-direct-contact\b[^>]*)>/g)];
+  assert.ok(actions.length >= 5);
+  for (const [, attributes] of actions) {
+   assert.ok(attributes.includes('href="' + expected + '"'));
+   if (expected !== '#contact') assert.match(attributes, /target="_blank" rel="noopener noreferrer"/);
+  }
+ }
+});
+
+test('Google profile links are optional, validated, escaped and translated', async () => {
+ const template = '<!-- GOOGLE_REVIEW_LINK -->';
+ assert.equal(renderGoogleReviewLink(template, {}), '');
+ for (const url of ['https://share.google/KW68Dg9SJO2Y3RwcV', 'https://maps.app.goo.gl/Example123',
+  'https://g.page/example/review', 'https://www.google.com/maps/place/example?x=1&y=2']) {
+  const result = renderGoogleReviewLink(template, {googleReviewsUrl:url});
+  assert.ok(result.includes(url.replaceAll('&', '&amp;')));
+  assert.match(result, /target="_blank" rel="noopener noreferrer"/);
+ }
+ for (const url of ['javascript:alert(1)', 'http://share.google/Code', 'https://share.google.evil.com/Code',
+  'https://share.google@evil.com/Code', 'https://user:pass@share.google/Code', 'https://share.google/Code?next=evil',
+  'https://google.com/url?q=https://evil.com', 'https://share.google:444/Code']) {
+  assert.throws(() => renderGoogleReviewLink(template, {googleReviewsUrl:url}));
+ }
+ const es = await readFile('dist/es.html', 'utf8');
+ assert.match(es, /Lee las reseñas en Google/);
+ assert.match(es, /Tarjetas de crédito/);
+ const html = await readFile('dist/index.html', 'utf8');
+ assert.match(html, /https:\/\/share.google\/KW68Dg9SJO2Y3RwcV/);
+ assert.doesNotMatch(html, /aggregateRating|reviewCount/);
 });

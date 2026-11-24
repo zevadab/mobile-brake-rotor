@@ -49,6 +49,7 @@ The build replaces only this project's generated `dist/` directory. It generates
 - WhatsApp Business short link or number and Facebook Messenger URL: [src/scripts/site-config.js](src/scripts/site-config.js). These settings are public; never add credentials.
 - Images: place optimized files in `public/assets/`, and retain source artwork in `design/originals/`. HTML uses published URLs such as `assets/photography/hero-1440.webp`.
 - Messaging setup: follow [docs/REQUEST_SETUP.md](docs/REQUEST_SETUP.md). WhatsApp is connected to the owner's business short link. Messenger remains unconfigured and labeled coming soon. Add its verified destination and rebuild to activate it; no contact form or backend is used.
+- Google reviews: `googleReviewsUrl` in the same configuration links the footer rating to the owner's listing. The rating is a dated, manually maintained snapshot; there is no live review widget. Confirmed payment methods are informational, with arrangements made in chat.
 
 Read [site standards](docs/SITE_STANDARDS.md), [brand guidelines](docs/BRAND_GUIDELINES.md), [design notes](docs/DESIGN_NOTES.md), [hero treatment](docs/MOTION_DESIGN.md), and [photography notes](docs/PHOTOGRAPHY.md) before changing those areas.
 

@@ -279,3 +279,19 @@ a.message-button.messenger:hover{background:#1c304d;border-color:#90baff}
 @media(max-width:1000px) and (min-width:701px){.contact-panel .message-actions{grid-template-columns:1fr}}
 @media(max-width:700px){.message-button{padding:12px 10px;gap:8px}.message-button strong{font-size:.9375rem}}
 .price.quote-price{font-size:clamp(1.65rem,2.4vw,2rem);line-height:1.15}
+
+/* A compact trust and payment summary, with no third-party widget downloads. */
+.footer-trust{display:grid;grid-template-columns:1fr 1fr;gap:48px;padding-bottom:36px;margin-bottom:36px;border-bottom:1px solid var(--line)}
+.footer-trust>div{min-width:0}
+.footer-trust .eyebrow{color:#c4cbd2;margin-bottom:14px}
+.rating-line{display:flex;align-items:center;flex-wrap:wrap;gap:20px}
+.rating-line strong{font:600 2.8rem/1.15 var(--heading);letter-spacing:-.04em}
+.rating-line strong span{font-size:1.1rem;color:var(--muted);letter-spacing:0}
+.review-stars{font-size:1.4rem;letter-spacing:.12em;color:#f5bd5c}
+.rating-date{color:var(--muted);font-size:.8125rem;margin-top:12px}
+.review-link{display:inline-flex;align-items:center;min-height:44px;margin-top:6px;color:#ff984f;font-weight:600;text-underline-offset:4px}
+.payment-summary h3{font-size:1.6rem}
+.payment-methods{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.payment-methods>span{display:inline-flex;align-items:center;min-height:40px;padding:8px 14px;border:1px solid #535e69;border-radius:8px;background:#191e24;font-weight:600;font-size:.875rem}
+.payment-summary>p:last-child{font-size:.875rem;color:var(--muted);margin-top:14px}
+@media(max-width:700px){.footer-trust{grid-template-columns:1fr;gap:28px}.payment-summary{border-top:1px solid var(--line);padding-top:26px}}
