@@ -27,6 +27,10 @@ The owner confirmed Visa, credit cards and Zelle on November 24, 2026. These app
 
 WhatsApp Business short links are preserved exactly. International numbers are converted to `https://wa.me/` followed by digits without the leading +, per [WhatsApp's click-to-chat guidance](https://faq.whatsapp.com/5913398998672934). The build accepts only HTTPS short links on `wa.me` with `/message/` and an alphanumeric business code, without query parameters or fragments. Messenger accepts only HTTPS links on `m.me` with a single Page username or ID; no redirect parameters or other domains.
 
+## Business hours
+
+The owner confirmed 8 AM–5 PM, subject to availability, on November 24, 2026. Display this in English and Spanish. Operating days have not been specified; do not imply daily service or add a weekly structured-data schedule until days are confirmed.
+
 ## Customer expectations
 
 Ask customers to share their vehicle's year, make, model, city, concern and preferred day in the chat. Reply personally and agree on scope, pricing and an available time. A message is not a confirmed appointment, and the website must not claim that a message was delivered just because a link was opened.
