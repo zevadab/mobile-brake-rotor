@@ -36,3 +36,7 @@ The owner confirmed Monday–Saturday, 8 AM–5 PM, subject to availability, on 
 Ask customers to share their vehicle's year, make, model, city, concern and preferred day in the chat. Reply personally and agree on scope, pricing and an available time. A message is not a confirmed appointment, and the website must not claim that a message was delivered just because a link was opened.
 
 The business handles incoming message volume, blocking and reporting within WhatsApp or Messenger. The site does not collect, upload or retain customer details. Existing Zoho mail configuration is separate and is not used by this contact flow.
+
+## Privacy policy
+
+The footer links to #privacy in both languages. The policy distinguishes the static website from messaging and service records, and discloses hosting and Google Fonts technical data processing. Review it before adding forms, analytics, advertising pixels, or changing record-handling practices. Do not promise zero retention or automatic deletion of third-party chat history.
